@@ -34,13 +34,9 @@ If you prefer using Noted as a desktop application rather than in a browser, you
 - **CSS3** - Styling and layout
 - **JavaScript (Vanilla)** - Client-side logic and local data handling
 
-## 🔄 Upcoming Updates
+## 💡Statement
 
-This project is actively maintained. Future updates will focus on:
-- Expanded import/export formats for notes.
-- Rich text editing enhancements.
-- UI theme customizations.
-- [Primary Link too] expansions.
+ -Website updates are always faster than app updates.
 
 ## 📄 License
 
