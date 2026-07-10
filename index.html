@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta name="google-site-verification" content="T23r0Od_4IgRnDofJDgYp40q4GmAGtwNvpCdal_uBeQ" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Noted</title>
@@ -9,11 +8,11 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
-    /* ---- Material You baseline purple tonal palette (light) ---- */
     --md-primary:#6750A4;
     --md-on-primary:#FFFFFF;
     --md-primary-container:#EADDFF;
@@ -41,7 +40,80 @@
     --shape-full: 999px;
     --motion-standard: cubic-bezier(0.2, 0, 0, 1);
     --motion-emphasized: cubic-bezier(0.3, 0, 0, 1);
+    --font-main: 'Product Sans', 'Google Sans', 'Noto Sans TC', 'Microsoft YaHei', sans-serif;
+    
+    --editor-font-size: 17px;
+    --editor-line-height: 1.8;
   }
+
+  /* Theme: Blue */
+  [data-accent="blue"] {
+    --md-primary: #005FAF;
+    --md-primary-container: #D1E4FF;
+    --md-on-primary-container: #001D36;
+    --md-secondary-container: #D7E3F7;
+    --md-on-secondary-container: #101C2B;
+    --md-tertiary: #525E7D;
+  }
+  [data-accent="blue"][data-theme="dark"] {
+    --md-primary: #A1C9FF;
+    --md-primary-container: #004887;
+    --md-on-primary-container: #D1E4FF;
+    --md-secondary-container: #3C4758;
+    --md-on-secondary-container: #D7E3F7;
+  }
+
+  /* Theme: Green */
+  [data-accent="green"] {
+    --md-primary: #006D3A;
+    --md-primary-container: #98F7B5;
+    --md-on-primary-container: #00210E;
+    --md-secondary-container: #D1E8D5;
+    --md-on-secondary-container: #0E1F12;
+    --md-tertiary: #3B644A;
+  }
+  [data-accent="green"][data-theme="dark"] {
+    --md-primary: #7DDA9B;
+    --md-primary-container: #00522A;
+    --md-on-primary-container: #98F7B5;
+    --md-secondary-container: #394B3E;
+    --md-on-secondary-container: #D1E8D5;
+  }
+
+  /* Theme: Yellow */
+  [data-accent="yellow"] {
+    --md-primary: #6E5E00;
+    --md-primary-container: #FFE46F;
+    --md-on-primary-container: #221B00;
+    --md-secondary-container: #E8E2C4;
+    --md-on-secondary-container: #1D1C0A;
+    --md-tertiary: #4A6547;
+  }
+  [data-accent="yellow"][data-theme="dark"] {
+    --md-primary: #E2C84D;
+    --md-primary-container: #534600;
+    --md-on-primary-container: #FFE46F;
+    --md-secondary-container: #4A4731;
+    --md-on-secondary-container: #E8E2C4;
+  }
+
+  /* Theme: Gray */
+  [data-accent="gray"] {
+    --md-primary: #5D5E61;
+    --md-primary-container: #E3E2E6;
+    --md-on-primary-container: #1A1C1E;
+    --md-secondary-container: #E1E2E5;
+    --md-on-secondary-container: #191C1E;
+    --md-tertiary: #5E5E62;
+  }
+  [data-accent="gray"][data-theme="dark"] {
+    --md-primary: #C7C6CA;
+    --md-primary-container: #46474A;
+    --md-on-primary-container: #E3E2E6;
+    --md-secondary-container: #444749;
+    --md-on-secondary-container: #E1E2E5;
+  }
+
   [data-theme="dark"]{
     color-scheme: dark;
     --md-primary:#D0BCFF;
@@ -70,10 +142,10 @@
   html,body{ height:100%; }
   body{
     margin:0;
-    font-family:"Inter","Noto Sans TC",sans-serif;
+    font-family: var(--font-main);
     background: var(--md-surface-dim);
     color: var(--md-on-surface);
-    font-size: 17px;
+    font-size: var(--editor-font-size);
     transition: background .4s var(--motion-standard), color .4s var(--motion-standard);
     -webkit-font-smoothing: antialiased;
   }
@@ -112,6 +184,11 @@
     margin:0;
     letter-spacing: -0.02em;
   }
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
   .icon-btn{
     width:44px; height:44px;
     border-radius: var(--shape-full);
@@ -122,10 +199,50 @@
     cursor:pointer;
     transition: background .2s var(--motion-standard), color .2s var(--motion-standard);
     flex-shrink:0;
+    position: relative;
   }
   .icon-btn:hover{ background: var(--md-surface-container-high); }
   .icon-btn:active{ background: var(--md-secondary-container); }
   .icon-btn svg{ width:22px; height:22px; }
+
+  /* Palette Menu */
+  .palette-menu {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    background: var(--md-surface-container-high);
+    border-radius: var(--shape-md);
+    padding: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    z-index: 100;
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+    pointer-events: none;
+    transition: opacity .3s var(--motion-emphasized), transform .3s var(--motion-emphasized);
+    transform-origin: top right;
+  }
+  .palette-menu.show { 
+    opacity: 1; 
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+  .palette-item {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s var(--motion-standard), box-shadow .2s;
+    border: 2px solid transparent;
+  }
+  .palette-item:hover { transform: scale(1.15); }
+  .palette-item.active { border-color: var(--md-primary); box-shadow: 0 0 0 2px var(--md-surface); }
+  .palette-color { width: 100%; height: 100%; border-radius: 50%; }
 
   .search-box{
     display:flex;
@@ -263,55 +380,97 @@
     flex-direction:column;
     overflow:hidden;
     min-width: 0;
+    position: relative; /* Base for all overlays */
   }
   .editor-toolbar{
     display:flex;
     align-items:center;
     gap: 14px;
     padding: 22px 32px 10px 32px;
+    position: relative;
+    z-index: 10;
   }
-  .title-input{
-    flex:1;
+  .title-input-container {
+    flex: 1;
+    min-width: 0;
+  }
+  .title-editable{
+    width: 100%;
     border:none; outline:none; background:transparent;
-    font: inherit; font-family:"Inter","Noto Sans TC",sans-serif;
+    font: inherit; font-family: var(--font-main);
     font-size: 30px; font-weight:700; color: var(--md-on-surface);
     letter-spacing:-0.01em;
-    min-width:0;
-    caret-color: var(--md-primary);
-    animation: caretPulse 1.4s ease-in-out infinite;
+    caret-color: transparent;
+    display: block;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+    overflow: hidden;
   }
-  .title-input::placeholder{ color: var(--md-on-surface-variant); opacity:.6; }
-  @keyframes caretPulse{
-    0%,100%{ caret-color: var(--md-primary); }
-    50%{ caret-color: var(--md-tertiary); }
+  .title-editable:empty::before{
+    content: attr(data-placeholder);
+    color: var(--md-on-surface-variant);
+    opacity:.6;
+    pointer-events:none;
   }
 
   .toolbar-actions{ display:flex; align-items:center; gap: 8px; flex-shrink:0; }
-  .meta-text{ font-size:13px; color: var(--md-on-surface-variant); white-space:nowrap; margin-right:6px; }
 
   .editor-body-wrap{
     flex:1;
     position:relative;
     padding: 10px 32px 32px 32px;
     overflow-y:auto;
+    display: flex;
+    align-items: flex-start;
   }
   .editor-body-wrap::-webkit-scrollbar{ width:6px; }
   .editor-body-wrap::-webkit-scrollbar-thumb{ background: var(--md-outline-variant); border-radius:4px; }
 
+  .line-numbers {
+    width: 0;
+    overflow: hidden;
+    padding-right: 0;
+    text-align: right;
+    color: var(--md-outline);
+    font-family: var(--font-main);
+    font-size: var(--editor-font-size);
+    line-height: var(--editor-line-height);
+    user-select: none;
+    opacity: 0;
+    border-right: 0 solid var(--md-outline-variant);
+    margin-right: 0;
+    transition: width .3s var(--motion-emphasized), opacity .3s var(--motion-emphasized), margin-right .3s var(--motion-emphasized), padding-right .3s var(--motion-emphasized);
+    white-space: nowrap;
+    padding-top: 0;
+    flex-shrink: 0;
+  }
+  .editor-body-wrap.show-lines .line-numbers { 
+    width: 44px; 
+    opacity: 0.5; 
+    margin-right: 16px; 
+    padding-right: 12px;
+    border-right-width: 1px;
+  }
+  .line-numbers span {
+    display: block;
+    height: calc(var(--editor-font-size) * var(--editor-line-height));
+  }
+
   .content-editable{
+    flex: 1;
     min-height: 100%;
     outline:none;
-    font-size: 17px;
-    line-height: 1.8;
+    font-size: var(--editor-font-size);
+    line-height: var(--editor-line-height);
     color: var(--md-on-surface);
-    caret-color: transparent; /* we render our own caret */
+    caret-color: transparent;
     white-space: pre-wrap;
     word-break: break-word;
     position: relative;
     z-index: 2;
-  }
-  .content-editable::selection{
-    background: transparent; /* replaced by the animated .sel-rect overlay */
+    padding-top: 0;
+    margin-top: 0;
   }
   .content-editable:empty::before{
     content: attr(data-placeholder);
@@ -320,18 +479,24 @@
     pointer-events:none;
   }
 
+  /* Universal Overlays */
+  .editor-overlay-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
   .selection-layer{
     position:absolute;
     top:0; left:0;
-    pointer-events:none;
-    z-index: 1;
+    width: 100%; height: 100%;
   }
   .sel-rect{
     position:absolute;
     background: var(--md-primary);
     opacity: 0.45;
     border-radius: 3px;
-    pointer-events:none;
     animation: selRectIn .16s var(--motion-standard) both;
     transform-origin: left center;
   }
@@ -345,21 +510,18 @@
     width: 2.5px;
     border-radius: 2px;
     background: var(--md-primary);
-    pointer-events:none;
     display:none;
-    top:0; left:0;
-    animation: caretBlink 1.05s steps(1) infinite;
+    animation: caretIdleColor 2s ease-in-out infinite;
     transition: top .13s var(--motion-standard), left .13s var(--motion-standard), height .13s var(--motion-standard);
-    z-index: 5;
+    z-index: 100;
   }
   .fake-caret.typing{
     display:block;
     animation: caretGlow 0.45s var(--motion-emphasized);
   }
-  @keyframes caretBlink{
-    0%,45%{ opacity:1; }
-    46%,95%{ opacity:0; }
-    96%,100%{ opacity:1; }
+  @keyframes caretIdleColor {
+    0%, 100% { background: var(--md-primary); box-shadow: 0 0 2px var(--md-primary); }
+    50% { background: var(--md-tertiary); box-shadow: 0 0 4px var(--md-tertiary); }
   }
   @keyframes caretGlow{
     0%{
@@ -387,57 +549,16 @@
     text-align:center;
     padding: 40px;
   }
-  .empty-editor svg{ width:72px; height:72px; opacity:.5; color: var(--md-primary); }
-  .empty-editor h2{ font-size:20px; margin:0; color: var(--md-on-surface); font-weight:600; }
-  .empty-editor p{ margin:0; font-size:14.5px; max-width:280px; }
+  .empty-editor svg{ width:72px; height:72px; opacity:.3; color: var(--md-on-surface-variant); }
+  .empty-editor h2{ font-size:22px; margin:0; color: var(--md-on-surface-variant); font-weight:500; opacity: 0.5; }
+  .empty-editor p{ margin:0; font-size:14.5px; max-width:280px; opacity: 0.4; }
 
   @media (max-width: 860px){
     .app{ padding:10px; gap:10px; }
     .sidebar{ width: 260px; min-width:220px; padding:14px 10px; }
     .editor-toolbar{ padding:18px 18px 8px 18px; }
     .editor-body-wrap{ padding: 8px 18px 20px 18px; }
-    .title-input{ font-size:24px; }
-  }
-  @media (max-width: 640px){
-    .app{ flex-direction:column; height:auto; min-height:100vh; min-height:100dvh; }
-    .sidebar{ width:100%; max-height: 40vh; }
-    .editor{ min-height: 60vh; }
-  }
-
-  /* ---- Portrait-orientation adaptation (phones & portrait tablets) ---- */
-  @media (orientation: portrait) and (max-width: 900px){
-    .app{
-      flex-direction: column;
-      height:auto;
-      min-height:100vh;
-      min-height:100dvh;
-      padding: 10px;
-      padding-top: max(10px, env(safe-area-inset-top));
-      padding-bottom: max(10px, env(safe-area-inset-bottom));
-      gap: 10px;
-    }
-    .sidebar{
-      width:100%;
-      min-width:0;
-      max-height: 34vh;
-      padding: 14px 10px;
-    }
-    .sidebar-header h1{ font-size:22px; }
-    .editor{ flex:1; min-height: 0; }
-    .editor-toolbar{ padding:16px 18px 8px 18px; gap:10px; }
-    .title-input{ font-size:22px; }
-    .editor-body-wrap{ padding: 8px 18px max(20px, env(safe-area-inset-bottom)) 18px; }
-    .fab{ padding: 14px 22px; font-size:14px; }
-    .note-item{ padding: 12px; }
-  }
-  @media (orientation: portrait) and (max-width: 420px){
-    .sidebar-header h1{ font-size:20px; }
-    .title-input{ font-size:20px; }
-    .content-editable{ font-size:16px; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    .title-editable{ font-size:24px; }
   }
 </style>
 </head>
@@ -447,59 +568,51 @@
   <aside class="sidebar">
     <div class="sidebar-header">
       <h1>筆記</h1>
-      <button class="icon-btn" id="themeToggle" title="切換深色/淺色主題">
-        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      </button>
+      <div class="header-controls">
+        <button class="icon-btn" id="paletteToggle" title="自定義顏色">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          <div class="palette-menu" id="paletteMenu">
+            <div class="palette-item" data-val="default" title="紫色 (預設)"><div class="palette-color" style="background:#6750A4"></div></div>
+            <div class="palette-item" data-val="blue" title="藍色"><div class="palette-color" style="background:#005FAF"></div></div>
+            <div class="palette-item" data-val="green" title="綠色"><div class="palette-color" style="background:#006D3A"></div></div>
+            <div class="palette-item" data-val="yellow" title="黃色"><div class="palette-color" style="background:#6E5E00"></div></div>
+            <div class="palette-item" data-val="gray" title="灰色"><div class="palette-color" style="background:#5D5E61"></div></div>
+          </div>
+        </button>
+        <button class="icon-btn" id="themeToggle" title="切換深色/淺色主題">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
     </div>
-
     <div class="search-box">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <input type="text" id="searchInput" placeholder="搜尋筆記">
+      <input type="text" id="searchInput" placeholder="搜尋筆記...">
     </div>
-
     <div class="notes-list" id="notesList"></div>
-
     <button class="fab" id="newNoteBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-      新增筆記
+      <span>新增筆記</span>
     </button>
   </aside>
-
   <main class="editor" id="editorPane"></main>
 </div>
 
 <script>
-(function(){
-  "use strict";
-
-  const ACCENTS = ['--md-primary','--md-tertiary','--md-on-surface-variant'];
-
-  const seedNotes = [
-    {
-      id: cryptoId(),
-      title: '歡迎使用「筆記」',
-      content: '這是一款以 Material You 設計語言打造的筆記工具。\n\n• 點擊左下角「新增筆記」開始寫作\n• 在上方搜尋框可即時篩選筆記\n• 輸入文字時，游標會有動態光暈效果\n\n試著點一下這段文字，然後打幾個字看看吧。',
-      updatedAt: Date.now(),
-      pinned: false,
-    }
-  ];
-
-  let notes = seedNotes;
-  let activeId = notes[0].id;
+  let notes = [];
+  let activeId = null;
   let searchQuery = '';
-  let justAddedId = null;
+  let showLineNumbers = false;
 
   const notesListEl = document.getElementById('notesList');
   const editorPane = document.getElementById('editorPane');
   const searchInput = document.getElementById('searchInput');
   const newNoteBtn = document.getElementById('newNoteBtn');
   const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const paletteToggle = document.getElementById('paletteToggle');
+  const paletteMenu = document.getElementById('paletteMenu');
 
-  function cryptoId(){
-    return 'n_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,8);
-  }
-
-  function getNote(id){ return notes.find(n => n.id === id); }
+  const ACCENTS = ['--md-primary', '--md-tertiary', '--md-outline'];
 
   function formatTime(ts){
     const diff = Date.now() - ts;
@@ -512,443 +625,207 @@
     return (d.getMonth()+1) + '/' + d.getDate();
   }
 
-  function firstLine(text){
-    const t = (text || '').trim();
-    return t.length ? t.split('\n')[0] : '沒有更多內容';
-  }
-
-  function downloadNote(n){
-    const safeTitle = (n.title || '').trim() || '無標題';
-    const filename = safeTitle.replace(/[\\/:*?"<>|]/g, '_') + '.txt';
-    const blob = new Blob([safeTitle + '\n\n' + (n.content || '')], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-
   const STORAGE_KEY = 'material-notes-app-v1';
-
-  const hasClaudeStorage = !!(window.storage && typeof window.storage.get === 'function');
-  let hasLocalStorage = false;
-  try{
-    localStorage.setItem('__notes_test__', '1');
-    localStorage.removeItem('__notes_test__');
-    hasLocalStorage = true;
-  } catch (err){
-    hasLocalStorage = false;
-  }
+  const CONFIG_KEY = 'material-notes-config-v1';
 
   let saveTimer = null;
-
   function scheduleSave(){
-    if (!hasClaudeStorage && !hasLocalStorage) return;
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(saveNotes, 500);
-  }
-
-  async function saveNotes(){
-    const payload = JSON.stringify(notes);
-    if (hasClaudeStorage){
-      try{
-        await window.storage.set('notes-data', payload, false);
-      } catch (err){
-        console.error('雲端儲存失敗：', err);
-      }
-    }
-    if (hasLocalStorage){
-      try{
-        localStorage.setItem(STORAGE_KEY, payload);
-      } catch (err){
-        console.error('本機離線儲存失敗：', err);
-      }
-    }
-  }
-
-  function normalizeNotes(parsed){
-    if (!Array.isArray(parsed) || !parsed.length) return null;
-    return parsed.map(n => ({
-      id: n.id || cryptoId(),
-      title: n.title || '',
-      content: n.content || '',
-      updatedAt: n.updatedAt || Date.now(),
-      pinned: !!n.pinned,
-    }));
+    saveTimer = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+      localStorage.setItem(CONFIG_KEY, JSON.stringify({
+        theme: document.documentElement.getAttribute('data-theme'),
+        accent: document.documentElement.getAttribute('data-accent'),
+        showLines: showLineNumbers
+      }));
+    }, 500);
   }
 
   async function loadNotes(){
-    let loaded = null;
-
-    if (hasClaudeStorage){
-      try{
-        const result = await window.storage.get('notes-data', false);
-        if (result && result.value){
-          loaded = normalizeNotes(JSON.parse(result.value));
-        }
-      } catch (err){
-        // no cloud-side data yet
-      }
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) notes = JSON.parse(raw) || [];
+    const cfgRaw = localStorage.getItem(CONFIG_KEY);
+    if (cfgRaw) {
+      const cfg = JSON.parse(cfgRaw);
+      if (cfg.theme) { document.documentElement.setAttribute('data-theme', cfg.theme); updateThemeIcon(cfg.theme === 'dark'); }
+      if (cfg.accent) { document.documentElement.setAttribute('data-accent', cfg.accent); updatePaletteSelection(cfg.accent); }
+      showLineNumbers = !!cfg.showLines;
     }
-
-    if (!loaded && hasLocalStorage){
-      try{
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw){
-          loaded = normalizeNotes(JSON.parse(raw));
-        }
-      } catch (err){
-        // no offline data yet, or it was corrupted
-      }
-    }
-
-    if (loaded){
-      notes = loaded;
-      activeId = notes[0].id;
-    }
+    activeId = null;
   }
 
-  function sortKey(n){
-    return (n.title || '').trim() || '無標題';
+  function updatePaletteSelection(accent) {
+    document.querySelectorAll('.palette-item').forEach(i => i.classList.toggle('active', (i.dataset.val === (accent || 'default'))));
   }
 
-  function sortedNotes(list){
-    return list.slice().sort((a, b) => {
-      if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
-      return sortKey(a).localeCompare(sortKey(b), 'zh-Hant');
-    });
-  }
-
-  function renderList(opts){
-    opts = opts || {};
+  function renderList(){
     const q = searchQuery.trim().toLowerCase();
-    const filtered = sortedNotes(notes)
-      .filter(n => !q || (n.title + ' ' + n.content).toLowerCase().includes(q));
+    const filtered = notes.slice().sort((a, b) => {
+      if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
+      return (a.title || '').trim().localeCompare((b.title || '').trim(), 'zh-Hant');
+    }).filter(n => !q || (n.title + ' ' + n.content).toLowerCase().includes(q));
 
     notesListEl.innerHTML = '';
-
     if (filtered.length === 0){
-      const empty = document.createElement('div');
-      empty.className = 'empty-list';
-      empty.textContent = q ? '找不到符合的筆記' : '還沒有筆記，點下方按鈕開始寫作';
-      notesListEl.appendChild(empty);
+      notesListEl.innerHTML = `<div class="empty-list">${q ? '找不到符合的筆記' : '還沒有筆記，點下方按鈕開始寫作'}</div>`;
       return;
     }
 
     filtered.forEach((n, idx) => {
       const item = document.createElement('div');
       item.className = 'note-item' + (n.id === activeId ? ' active' : '');
-      item.dataset.id = n.id;
-
-      if (n.id === justAddedId){
-        item.classList.add('note-enter');
-        justAddedId = null;
-      } else if (opts.searchTrigger && q){
-        item.classList.add('note-search-enter');
-        item.style.animationDelay = (idx * 35) + 'ms';
-      }
-
-      const dot = document.createElement('div');
-      dot.className = 'note-dot';
-      dot.style.background = `var(${ACCENTS[idx % ACCENTS.length]})`;
-
-      const texts = document.createElement('div');
-      texts.className = 'note-texts';
-
-      const title = document.createElement('p');
-      title.className = 'note-title';
-      title.textContent = n.title.trim() || '無標題';
-
-      const preview = document.createElement('p');
-      preview.className = 'note-preview';
-      preview.textContent = firstLine(n.content);
-
-      const time = document.createElement('span');
-      time.className = 'note-time';
-      time.textContent = formatTime(n.updatedAt);
-
-      texts.appendChild(title);
-      texts.appendChild(preview);
-      texts.appendChild(time);
-
-      const starBtn = document.createElement('button');
-      starBtn.className = 'note-star' + (n.pinned ? ' pinned' : '');
-      starBtn.title = n.pinned ? '取消置頂' : '置頂筆記';
-      starBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="' + (n.pinned ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>';
-      starBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        n.pinned = !n.pinned;
-        renderList();
-        scheduleSave();
-      });
-
-      item.appendChild(dot);
-      item.appendChild(texts);
-      item.appendChild(starBtn);
-
-      item.addEventListener('click', () => {
-        activeId = n.id;
-        renderList();
-        renderEditor();
-      });
-
+      item.innerHTML = `
+        <div class="note-dot" style="background:var(${ACCENTS[idx % ACCENTS.length]})"></div>
+        <div class="note-texts">
+          <p class="note-title">${n.title.trim() || '無標題'}</p>
+          <p class="note-preview">${(n.content || '').trim().split('\n')[0] || '沒有更多內容'}</p>
+          <span class="note-time">${formatTime(n.updatedAt)}</span>
+        </div>
+        <button class="note-star ${n.pinned ? 'pinned' : ''}"><svg viewBox="0 0 24 24" fill="${n.pinned ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg></button>
+      `;
+      item.querySelector('.note-star').onclick = (e) => { e.stopPropagation(); n.pinned = !n.pinned; renderList(); scheduleSave(); };
+      item.onclick = () => { activeId = n.id; renderList(); renderEditor(); };
       notesListEl.appendChild(item);
     });
   }
 
   function renderEditor(){
-    const note = getNote(activeId);
+    const note = notes.find(n => n.id === activeId);
     editorPane.innerHTML = '';
-
     if (!note){
-      const empty = document.createElement('div');
-      empty.className = 'empty-editor';
-      empty.innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
-        <h2>選擇或建立一則筆記</h2>
-        <p>從左側選擇一則筆記繼續編輯，或點擊「新增筆記」開始寫下新的想法。</p>
-      `;
-      editorPane.appendChild(empty);
+      editorPane.innerHTML = `<div class="empty-editor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg><h2>歡迎回來</h2><p>從左側選擇一則筆記繼續編輯，或點擊「新增筆記」開始寫下新的想法。</p></div>`;
       return;
     }
 
-    const toolbar = document.createElement('div');
-    toolbar.className = 'editor-toolbar';
+    editorPane.innerHTML = `
+      <div class="editor-toolbar">
+        <div class="title-input-container"><div class="title-editable" contenteditable="true" id="titleInput" data-placeholder="標題">${note.title}</div></div>
+        <div class="toolbar-actions">
+          <button class="icon-btn" id="lineBtn" title="切換行數顯示" style="color:${showLineNumbers ? 'var(--md-primary)' : ''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+          <button class="icon-btn" id="deleteBtn" title="刪除筆記"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+        </div>
+      </div>
+      <div class="editor-body-wrap ${showLineNumbers ? 'show-lines' : ''}" id="editorWrap">
+        <div class="line-numbers" id="lineNumbers"></div>
+        <div class="content-editable" contenteditable="true" id="contentEditable" data-placeholder="開始輸入...">${note.content}</div>
+      </div>
+      <div class="editor-overlay-layer">
+        <div class="selection-layer" id="selectionLayer"></div>
+        <div class="fake-caret" id="fakeCaret"></div>
+      </div>
+    `;
 
-    const titleInput = document.createElement('input');
-    titleInput.className = 'title-input';
-    titleInput.placeholder = '標題';
-    titleInput.value = note.title;
-    titleInput.id = 'titleInput';
+    const titleInput = document.getElementById('titleInput');
+    const contentEl = document.getElementById('contentEditable');
+    const lineNumbers = document.getElementById('lineNumbers');
+    const caret = document.getElementById('fakeCaret');
+    const selectionLayer = document.getElementById('selectionLayer');
 
-    const actions = document.createElement('div');
-    actions.className = 'toolbar-actions';
+    const updateLines = () => {
+      const lines = contentEl.innerText.split('\n');
+      lineNumbers.innerHTML = lines.map((_, i) => `<span>${i+1}</span>`).join('');
+    };
+    updateLines();
 
-    const metaText = document.createElement('span');
-    metaText.className = 'meta-text';
-    metaText.id = 'lastSaved';
-    metaText.textContent = '已儲存 · ' + formatTime(note.updatedAt);
-
-    const downloadBtn = document.createElement('button');
-    downloadBtn.className = 'icon-btn';
-    downloadBtn.title = '下載筆記到本機';
-    downloadBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>';
-    downloadBtn.addEventListener('click', () => downloadNote(note));
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'icon-btn';
-    deleteBtn.title = '刪除筆記';
-    deleteBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>';
-
-    actions.appendChild(metaText);
-    actions.appendChild(downloadBtn);
-    actions.appendChild(deleteBtn);
-    toolbar.appendChild(titleInput);
-    toolbar.appendChild(actions);
-
-    const bodyWrap = document.createElement('div');
-    bodyWrap.className = 'editor-body-wrap';
-    bodyWrap.id = 'editorWrap';
-
-    const contentEl = document.createElement('div');
-    contentEl.className = 'content-editable';
-    contentEl.contentEditable = 'true';
-    contentEl.id = 'contentEditable';
-    contentEl.dataset.placeholder = '開始輸入...';
-    contentEl.textContent = note.content;
-
-    const selectionLayer = document.createElement('div');
-    selectionLayer.className = 'selection-layer';
-    selectionLayer.id = 'selectionLayer';
-
-    const caret = document.createElement('div');
-    caret.className = 'fake-caret';
-    caret.id = 'fakeCaret';
-
-    bodyWrap.appendChild(contentEl);
-    bodyWrap.appendChild(selectionLayer);
-    bodyWrap.appendChild(caret);
-
-    editorPane.appendChild(toolbar);
-    editorPane.appendChild(bodyWrap);
-
-    // ---- wire up events ----
-    titleInput.addEventListener('input', () => {
-      note.title = titleInput.value;
-      note.updatedAt = Date.now();
-      metaText.textContent = '已儲存 · ' + formatTime(note.updatedAt);
-      renderList();
-      scheduleSave();
-    });
-
-    deleteBtn.addEventListener('click', () => {
-      if (!confirm('確定要刪除這則筆記嗎？此動作無法復原。')) return;
-      const remaining = notes.filter(n => n.id !== note.id);
-      notes = remaining;
-      const sorted = sortedNotes(notes);
-      activeId = sorted.length ? sorted[0].id : null;
-      renderList();
-      renderEditor();
-      scheduleSave();
-    });
-
-    contentEl.addEventListener('input', () => {
-      note.content = contentEl.innerText;
-      note.updatedAt = Date.now();
-      metaText.textContent = '已儲存 · ' + formatTime(note.updatedAt);
-      renderList();
-      updateCaret(true);
-      updateSelectionHighlight(true);
-      scheduleSave();
-    });
-
-    let isSelecting = false;
-
-    contentEl.addEventListener('mousedown', () => { isSelecting = true; });
-    contentEl.addEventListener('touchstart', () => { isSelecting = true; }, { passive: true });
-
-    document.addEventListener('mouseup', () => {
-      if (!isSelecting) return;
-      isSelecting = false;
-      if (document.activeElement === contentEl) updateSelectionHighlight(true);
-    });
-    document.addEventListener('touchend', () => {
-      if (!isSelecting) return;
-      isSelecting = false;
-      if (document.activeElement === contentEl) updateSelectionHighlight(true);
-    });
-
-    let caretMoveHandler = () => { updateCaret(false); updateSelectionHighlight(!isSelecting); };
-    ['click','keyup','focus','scroll'].forEach(evt => {
-      contentEl.addEventListener(evt, caretMoveHandler);
-    });
-    contentEl.addEventListener('blur', () => {
-      caret.style.display = 'none';
-      selectionLayer.innerHTML = '';
-    });
-    document.addEventListener('selectionchange', () => {
-      if (document.activeElement === contentEl){
-        updateCaret(false);
-        updateSelectionHighlight(!isSelecting);
-      }
-    });
-
-    function updateSelectionHighlight(animate){
-      selectionLayer.innerHTML = '';
+    const updateUI = (typing) => {
       const sel = window.getSelection();
-      if (!sel || sel.rangeCount === 0 || sel.isCollapsed || document.activeElement !== contentEl){
+      if (!sel || sel.rangeCount === 0) return;
+      
+      const active = document.activeElement;
+      if (active !== titleInput && active !== contentEl) {
+        caret.style.display = 'none';
+        selectionLayer.innerHTML = '';
         return;
       }
+      
       const range = sel.getRangeAt(0);
-      const rects = range.getClientRects();
-      if (!rects || rects.length === 0) return;
-      const wrapRect = bodyWrap.getBoundingClientRect();
-      Array.from(rects).forEach((r, i) => {
-        if (r.width === 0 || r.height === 0) return;
-        const box = document.createElement('div');
-        box.className = 'sel-rect';
-        box.style.top = (r.top - wrapRect.top + bodyWrap.scrollTop) + 'px';
-        box.style.left = (r.left - wrapRect.left + bodyWrap.scrollLeft) + 'px';
-        box.style.width = r.width + 'px';
-        box.style.height = r.height + 'px';
-        if (animate){
-          box.style.animationDelay = (i * 12) + 'ms';
-        } else {
-          // Live-tracking during an active drag: show instantly, no entrance animation.
-          box.style.animation = 'none';
-          box.style.opacity = '0.45';
-        }
-        selectionLayer.appendChild(box);
-      });
-    }
+      const caretRange = range.cloneRange();
+      caretRange.collapse(true);
+      
+      let rect = caretRange.getClientRects()[0] || caretRange.getBoundingClientRect();
+      if (!rect || rect.top === 0) rect = active.getBoundingClientRect();
 
-    let caretPositioned = false;
-
-    function updateCaret(typing){
-      const sel = window.getSelection();
-      if (!sel || sel.rangeCount === 0 || document.activeElement !== contentEl){
-        return;
-      }
-      const range = sel.getRangeAt(0).cloneRange();
-      range.collapse(true);
-
-      let rect = range.getClientRects()[0];
-      if (!rect || (rect.width === 0 && rect.height === 0)){
-        rect = range.getBoundingClientRect();
-      }
-      if (!rect || (rect.top === 0 && rect.left === 0 && rect.height === 0)){
-        rect = contentEl.getBoundingClientRect();
-      }
-
-      const wrapRect = bodyWrap.getBoundingClientRect();
-      const top = rect.top - wrapRect.top + bodyWrap.scrollTop;
-      const left = rect.left - wrapRect.left + bodyWrap.scrollLeft;
-      const height = rect.height || 22;
-
-      if (!caretPositioned){
-        caret.style.transition = 'none';
-      }
-
+      const editorRect = editorPane.getBoundingClientRect();
       caret.style.display = 'block';
-      caret.style.top = top + 'px';
-      caret.style.left = left + 'px';
-      caret.style.height = height + 'px';
+      caret.style.top = (rect.top - editorRect.top) + 'px';
+      caret.style.left = (rect.left - editorRect.left) + 'px';
+      caret.style.height = (rect.height || (active === titleInput ? 36 : 22)) + 'px';
+      
+      if (typing) { caret.classList.remove('typing'); void caret.offsetWidth; caret.classList.add('typing'); }
 
-      if (!caretPositioned){
-        void caret.offsetWidth; // flush so the snap isn't animated
-        caret.style.transition = '';
-        caretPositioned = true;
+      selectionLayer.innerHTML = '';
+      if (!sel.isCollapsed) {
+        Array.from(range.getClientRects()).forEach(r => {
+          if (r.width < 1) return;
+          const box = document.createElement('div');
+          box.className = 'sel-rect';
+          box.style.top = (r.top - editorRect.top) + 'px';
+          box.style.left = (r.left - editorRect.left) + 'px';
+          box.style.width = r.width + 'px';
+          box.style.height = r.height + 'px';
+          selectionLayer.appendChild(box);
+        });
       }
+    };
 
-      if (typing){
-        caret.classList.remove('typing');
-        void caret.offsetWidth; // restart animation
-        caret.classList.add('typing');
-        clearTimeout(caret._blinkTimer);
-        caret._blinkTimer = setTimeout(() => {
-          caret.classList.remove('typing');
-        }, 500);
+    titleInput.oninput = (e) => {
+      if (e.inputType === 'insertParagraph') { e.preventDefault(); contentEl.focus(); return; }
+      note.title = titleInput.innerText.replace(/\n/g, '');
+      note.updatedAt = Date.now(); renderList(); updateUI(true); scheduleSave();
+    };
+    contentEl.oninput = () => {
+      note.content = contentEl.innerText;
+      note.updatedAt = Date.now(); renderList(); updateLines(); updateUI(true); scheduleSave();
+    };
+    
+    [titleInput, contentEl].forEach(el => {
+      ['click','keyup','focus','scroll','mousedown','mouseup'].forEach(evt => 
+        el.addEventListener(evt, () => setTimeout(() => updateUI(false), 0))
+      );
+      el.onblur = () => { caret.style.display = 'none'; selectionLayer.innerHTML = ''; };
+    });
+
+    document.getElementById('lineBtn').onclick = () => {
+      showLineNumbers = !showLineNumbers;
+      document.getElementById('editorWrap').classList.toggle('show-lines', showLineNumbers);
+      document.getElementById('lineBtn').style.color = showLineNumbers ? 'var(--md-primary)' : '';
+      scheduleSave();
+    };
+
+    document.getElementById('deleteBtn').onclick = () => {
+      if (confirm('確定要刪除這則筆記嗎？')) {
+        notes = notes.filter(n => n.id !== note.id);
+        activeId = null; renderList(); renderEditor(); scheduleSave();
       }
-    }
-
-    // focus new/empty notes automatically
-    if (!note.content && !note.title){
-      titleInput.focus();
-    }
+    };
   }
 
-  newNoteBtn.addEventListener('click', () => {
-    const note = { id: cryptoId(), title: '', content: '', updatedAt: Date.now(), pinned: false };
-    notes.push(note);
-    activeId = note.id;
-    justAddedId = note.id;
-    searchQuery = '';
-    searchInput.value = '';
-    renderList();
-    renderEditor();
-    scheduleSave();
-  });
+  newNoteBtn.onclick = () => {
+    const note = { id: Math.random().toString(36).substr(2, 9), title: '', content: '', updatedAt: Date.now(), pinned: false };
+    notes.push(note); activeId = note.id; renderList(); renderEditor(); scheduleSave();
+  };
 
-  searchInput.addEventListener('input', () => {
-    searchQuery = searchInput.value;
-    renderList({ searchTrigger: true });
+  searchInput.oninput = () => { searchQuery = searchInput.value; renderList(); };
+  themeToggle.onclick = () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    updateThemeIcon(next === 'dark'); scheduleSave();
+  };
+  paletteToggle.onclick = (e) => { e.stopPropagation(); paletteMenu.classList.toggle('show'); };
+  document.querySelectorAll('.palette-item').forEach(item => {
+    item.onclick = () => {
+      const val = item.dataset.val;
+      if (val === 'default') document.documentElement.removeAttribute('data-accent');
+      else document.documentElement.setAttribute('data-accent', val);
+      updatePaletteSelection(val); scheduleSave();
+    };
   });
+  document.onclick = () => paletteMenu.classList.remove('show');
+  function updateThemeIcon(isDark){
+    themeIcon.innerHTML = isDark ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>' : '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+  }
 
-  themeToggle.addEventListener('click', () => {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  });
-
-  (async function init(){
-    await loadNotes();
-    renderList();
-    renderEditor();
-  })();
-})();
+  loadNotes().then(() => { renderList(); renderEditor(); });
 </script>
 </body>
 </html>
