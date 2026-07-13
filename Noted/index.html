@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Noted</title>
+
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --md-primary:#6750A4;
+    --md-on-primary:#FFFFFF;
+    --md-primary-container:#EADDFF;
+    --md-on-primary-container:#21005D;
+    --md-secondary-container:#E8DEF8;
+    --md-on-secondary-container:#1D192B;
+    --md-tertiary:#7D5260;
+    --md-tertiary-container:#FFD8E4;
+    --md-on-tertiary-container:#31111D;
+    --md-surface:#FFFBFE;
+    --md-surface-dim:#F6F2FA;
+    --md-surface-container:#F3EDF7;
+    --md-surface-container-high:#ECE6F0;
+    --md-surface-variant:#E7E0EC;
+    --md-on-surface:#1C1B1F;
+    --md-on-surface-variant:#49454F;
+    --md-outline:#79747E;
+    --md-outline-variant:#CAC4D0;
+    --md-error:#B3261E;
+    --md-error-container:#F9DEDC;
+    --shape-xs: 8px;
+    --shape-sm: 14px;
+    --shape-md: 20px;
+    --shape-lg: 28px;
+    --shape-full: 999px;
+    --motion-standard: cubic-bezier(0.2, 0, 0, 1);
+    --motion-emphasized: cubic-bezier(0.3, 0, 0, 1);
+    --font-main: 'Product Sans', 'Google Sans', 'Noto Sans TC', 'Microsoft YaHei', sans-serif;
+    
+    --editor-font-size: 17px;
+    --editor-line-height: 1.8;
+  }
+
+  /* Theme: Blue */
+  [data-accent="blue"] { --md-primary: #005FAF; --md-primary-container: #D1E4FF; --md-on-primary-container: #001D36; --md-secondary-container: #D7E3F7; --md-on-secondary-container: #101C2B; --md-tertiary: #525E7D; }
+  [data-accent="blue"][data-theme="dark"] { --md-primary: #A1C9FF; --md-primary-container: #004887; --md-on-primary-container: #D1E4FF; --md-secondary-container: #3C4758; --md-on-secondary-container: #D7E3F7; }
+
+  /* Theme: Green */
+  [data-accent="green"] { --md-primary: #006D3A; --md-primary-container: #98F7B5; --md-on-primary-container: #00210E; --md-secondary-container: #D1E8D5; --md-on-secondary-container: #0E1F12; --md-tertiary: #3B644A; }
+  [data-accent="green"][data-theme="dark"] { --md-primary: #7DDA9B; --md-primary-container: #00522A; --md-on-primary-container: #98F7B5; --md-secondary-container: #394B3E; --md-on-secondary-container: #D1E8D5; }
+
+  /* Theme: Yellow */
+  [data-accent="yellow"] { --md-primary: #6E5E00; --md-primary-container: #FFE46F; --md-on-primary-container: #221B00; --md-secondary-container: #E8E2C4; --md-on-secondary-container: #1D1C0A; --md-tertiary: #4A6547; }
+  [data-accent="yellow"][data-theme="dark"] { --md-primary: #E2C84D; --md-primary-container: #534600; --md-on-primary-container: #FFE46F; --md-secondary-container: #4A4731; --md-on-secondary-container: #E8E2C4; }
+
+  /* Theme: Gray */
+  [data-accent="gray"] { --md-primary: #5D5E61; --md-primary-container: #E3E2E6; --md-on-primary-container: #1A1C1E; --md-secondary-container: #E1E2E5; --md-on-secondary-container: #191C1E; --md-tertiary: #5E5E62; }
+  [data-accent="gray"][data-theme="dark"] { --md-primary: #C7C6CA; --md-primary-container: #46474A; --md-on-primary-container: #E3E2E6; --md-secondary-container: #444749; --md-on-secondary-container: #E1E2E5; }
+
+  [data-theme="dark"]{
+    color-scheme: dark;
+    --md-primary:#D0BCFF;
+    --md-on-primary:#381E72;
+    --md-primary-container:#4F378B;
+    --md-on-primary-container:#EADDFF;
+    --md-secondary-container:#4A4458;
+    --md-on-secondary-container:#E8DEF8;
+    --md-tertiary:#EFB8C8;
+    --md-tertiary-container:#633B48;
+    --md-on-tertiary-container:#FFD8E4;
+    --md-surface:#141218;
+    --md-surface-dim:#141218;
+    --md-surface-container:#1D1B20;
+    --md-surface-container-high:#2B2930;
+    --md-surface-variant:#49454F;
+    --md-on-surface:#E6E1E5;
+    --md-on-surface-variant:#CAC4D0;
+    --md-outline:#938F99;
+    --md-outline-variant:#49454F;
+    --md-error:#F2B8B5;
+    --md-error-container:#8C1D18;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    font-family: var(--font-main);
+    background: var(--md-surface-dim);
+    color: var(--md-on-surface);
+    font-size: var(--editor-font-size);
+    transition: background .4s var(--motion-standard), color .4s var(--motion-standard);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .app{
+    display:flex;
+    height:100vh;
+    height:100dvh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* ---------------- Sidebar ---------------- */
+  .sidebar{
+    width: 340px;
+    min-width: 300px;
+    background: var(--md-surface-container);
+    border-radius: var(--shape-lg);
+    display:flex;
+    flex-direction:column;
+    padding: 20px 16px 16px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sidebar-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 4px 10px 20px 10px;
+  }
+  .sidebar-header h1{ font-size: 26px; font-weight: 700; margin:0; letter-spacing: -0.02em; }
+  .header-controls { display: flex; align-items: center; gap: 4px; }
+  .icon-btn{
+    width:44px; height:44px;
+    border-radius: var(--shape-full);
+    border:none; background: transparent;
+    color: var(--md-on-surface-variant);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition: background .2s var(--motion-standard), color .2s var(--motion-standard);
+    flex-shrink:0; position: relative;
+  }
+  .icon-btn:hover{ background: var(--md-surface-container-high); }
+  .icon-btn:active{ background: var(--md-secondary-container); }
+  .icon-btn svg{ width:22px; height:22px; flex-shrink: 0; }
+
+  .palette-menu {
+    position: absolute;
+    top: 52px; right: 0;
+    background: var(--md-surface-container-high);
+    border-radius: var(--shape-md);
+    padding: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    display: flex; flex-direction: row; gap: 8px; z-index: 100;
+    opacity: 0; transform: scale(0.8) translateY(-10px);
+    pointer-events: none; transition: opacity .3s var(--motion-emphasized), transform .3s var(--motion-emphasized);
+    transform-origin: top right;
+  }
+  .palette-menu.show { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+  .palette-item {
+    width: 32px; height: 32px; border-radius: 50%;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: transform .2s var(--motion-standard), box-shadow .2s;
+    border: 2px solid transparent;
+  }
+  .palette-item:hover { transform: scale(1.15); }
+  .palette-item.active { border-color: var(--md-primary); box-shadow: 0 0 0 2px var(--md-surface); }
+  .palette-color { width: 100%; height: 100%; border-radius: 50%; }
+
+  .search-box{
+    display:flex; align-items:center; gap: 10px;
+    background: var(--md-surface-container-high);
+    border-radius: var(--shape-full);
+    padding: 12px 18px; margin: 0 4px 16px 4px;
+    transition: box-shadow .2s var(--motion-standard);
+  }
+  .search-box:focus-within{ box-shadow: 0 0 0 2px var(--md-primary) inset; }
+  .search-box svg{ width:20px; height:20px; color: var(--md-on-surface-variant); flex-shrink:0; }
+  .search-box input{ border:none; outline:none; background:transparent; font: inherit; font-size:15px; color: var(--md-on-surface); width:100%; }
+
+  .notes-list{ flex:1; overflow-y:auto; display:flex; flex-direction:column; gap: 4px; padding: 0 4px 90px 4px; }
+  .notes-list::-webkit-scrollbar{ width:6px; }
+  .notes-list::-webkit-scrollbar-thumb{ background: var(--md-outline-variant); border-radius:4px; }
+
+  .note-item{
+    display:flex; align-items:flex-start; gap:12px;
+    padding: 14px 14px; border-radius: var(--shape-md);
+    cursor:pointer; transition: background .2s var(--motion-standard), transform .15s var(--motion-standard);
+    position:relative;
+  }
+  .note-item:hover{ background: var(--md-surface-container-high); }
+  .note-item.active{ background: var(--md-secondary-container); }
+  .note-item:active{ transform: scale(0.98); }
+
+  /* New note animation */
+  .note-item.note-enter { animation: noteEnter 0.4s var(--motion-emphasized); }
+  @keyframes noteEnter {
+    from { opacity: 0; transform: scale(0.8) translateY(-10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .note-dot{ width:12px; height:12px; border-radius:50%; margin-top:6px; flex-shrink:0; }
+  .note-texts{ flex:1; min-width:0; }
+  .note-title{ font-weight:600; font-size:15.5px; margin:0 0 3px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color: var(--md-on-surface); }
+  .note-preview{ font-size:13.5px; color: var(--md-on-surface-variant); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0 0 4px 0; }
+  .note-time{ font-size:12px; color: var(--md-on-surface-variant); opacity:.8; }
+
+  .note-star{
+    width:32px; height:32px; border-radius: var(--shape-full);
+    border:none; background:transparent; color: var(--md-outline);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; flex-shrink:0; align-self:center; margin-left:2px;
+    transition: color .2s var(--motion-standard), transform .15s var(--motion-standard), background .2s var(--motion-standard);
+  }
+  .note-star svg{ width:18px; height:18px; flex-shrink: 0; }
+  .note-star.pinned{ color: var(--md-primary); }
+
+  .fab{
+    position:absolute; bottom:20px; left:50%; transform: translateX(-50%);
+    display:flex; align-items:center; gap:10px; background: var(--md-primary-container);
+    color: var(--md-on-primary-container); border:none; border-radius: var(--shape-full);
+    padding: 16px 26px; font: inherit; font-weight:600; font-size:15px; cursor:pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: box-shadow .25s, transform .15s, background .2s;
+    width: calc(100% - 24px); justify-content:center; z-index: 50;
+  }
+  .fab:hover{ background: var(--md-secondary-container); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+  .fab:active{ transform: translateX(-50%) scale(0.97); }
+  .fab svg{ width:22px; height:22px; flex-shrink: 0; }
+
+  /* ---------------- Editor ---------------- */
+  .editor{
+    flex:1; background: var(--md-surface-container); border-radius: var(--shape-lg);
+    display:flex; flex-direction:column; overflow:hidden; min-width: 0; position: relative;
+  }
+
+  /* Switch note animation */
+  .editor-content-area {
+    flex: 1; display: flex; flex-direction: column; overflow: hidden;
+    animation: editorFadeIn 0.35s var(--motion-standard);
+  }
+  @keyframes editorFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .editor-toolbar{ display:flex; align-items:center; gap: 14px; padding: 22px 32px 10px 32px; position: relative; z-index: 10; }
+  .title-input-container { flex: 1; min-width: 0; }
+  .title-editable{
+    width: 100%; border:none; outline:none; background:transparent;
+    font: inherit; font-family: var(--font-main); font-size: 30px; font-weight:700;
+    color: var(--md-on-surface); letter-spacing:-0.01em; caret-color: transparent;
+    display: block; position: relative; z-index: 2; white-space: nowrap; overflow: hidden;
+  }
+  .title-editable:empty::before{ content: attr(data-placeholder); color: var(--md-on-surface-variant); opacity:.6; pointer-events:none; }
+
+  .editor-body-wrap{ flex:1; position:relative; padding: 10px 32px 32px 32px; overflow-y:auto; display: flex; align-items: flex-start; }
+  .editor-body-wrap::-webkit-scrollbar{ width:6px; }
+  .editor-body-wrap::-webkit-scrollbar-thumb{ background: var(--md-outline-variant); border-radius:4px; }
+
+  .line-numbers {
+    width: 0; overflow: hidden; padding-right: 0; text-align: right; color: var(--md-outline);
+    font-family: var(--font-main); font-size: var(--editor-font-size); line-height: var(--editor-line-height);
+    user-select: none; opacity: 0; border-right: 0 solid var(--md-outline-variant); margin-right: 0;
+    transition: width .3s var(--motion-emphasized), opacity .3s var(--motion-emphasized), margin-right .3s var(--motion-emphasized), padding-right .3s var(--motion-emphasized);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .editor-body-wrap.show-lines .line-numbers { width: 44px; opacity: 0.5; margin-right: 16px; padding-right: 12px; border-right-width: 1px; }
+  .line-numbers span { display: block; height: calc(var(--editor-font-size) * var(--editor-line-height)); }
+
+  .content-editable{
+    flex: 1; min-height: 100%; outline:none; font-size: var(--editor-font-size);
+    line-height: var(--editor-line-height); color: var(--md-on-surface); caret-color: transparent;
+    white-space: pre-wrap; word-break: break-word; position: relative; z-index: 2;
+  }
+  .content-editable:empty::before{ content: attr(data-placeholder); color: var(--md-on-surface-variant); opacity:.55; pointer-events:none; }
+
+  /* Overlays */
+  .editor-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; overflow: hidden; }
+  .selection-layer{ position:absolute; top:0; left:0; width: 100%; height: 100%; }
+  .sel-rect{ position:absolute; background: var(--md-primary); opacity: 0.45; border-radius: 3px; animation: selRectIn .16s var(--motion-standard) both; transform-origin: left center; }
+  @keyframes selRectIn{ from{ opacity:0; transform: scaleX(0.85); } to{ opacity:0.45; transform: scaleX(1); } }
+
+  .fake-caret{
+    position:absolute; width: 2.5px; border-radius: 2px; background: var(--md-primary);
+    display:none; animation: caretIdleColor 2s ease-in-out infinite;
+    transition: top .13s var(--motion-standard), left .13s var(--motion-standard), height .13s var(--motion-standard);
+    z-index: 100;
+  }
+  .fake-caret.typing{ display:block; animation: caretGlow 0.45s var(--motion-emphasized); }
+  @keyframes caretIdleColor { 0%, 100% { background: var(--md-primary); box-shadow: 0 0 2px var(--md-primary); } 50% { background: var(--md-tertiary); box-shadow: 0 0 4px var(--md-tertiary); } }
+  @keyframes caretGlow{ 0%{ opacity:1; transform: scaleY(1.35) scaleX(1.8); background: var(--md-tertiary); box-shadow: 0 0 8px 1px var(--md-tertiary); } 100%{ opacity:1; transform: scaleY(1) scaleX(1); background: var(--md-primary); box-shadow: 0 0 0 0 transparent; } }
+
+  .empty-editor{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; color: var(--md-on-surface-variant); text-align:center; padding: 40px; }
+  .empty-editor svg{ width:72px; height:72px; opacity:.3; flex-shrink: 0; }
+  .empty-editor h2{ font-size:22px; margin:0; opacity: 0.5; }
+
+  /* ---------------- Responsive ---------------- */
+  @media (max-width: 900px), (orientation: portrait) {
+    .app { flex-direction: column; padding: 10px; height: auto; min-height: 100vh; min-height: 100dvh; gap: 10px; }
+    .sidebar { width: 100%; min-width: 0; max-height: 35vh; padding: 14px 10px; }
+    .editor { flex: 1; min-height: 50vh; }
+    .editor-toolbar { padding: 16px 20px 8px 20px; }
+    .title-editable { font-size: 24px; }
+    .editor-body-wrap { padding: 8px 20px 20px 20px; }
+    .fab { padding: 14px 22px; font-size: 14px; bottom: 16px; width: auto; min-width: 140px; max-width: 80%; }
+  }
+
+  @media (max-width: 480px) {
+    .sidebar-header h1 { font-size: 22px; }
+    .title-editable { font-size: 20px; }
+    body { font-size: 16px; }
+    .fab { padding: 12px 20px; font-size: 13px; }
+    .fab svg { width: 18px; height: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>筆記</h1>
+      <div class="header-controls">
+        <button class="icon-btn" id="paletteToggle" title="自定義顏色">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          <div class="palette-menu" id="paletteMenu">
+            <div class="palette-item" data-val="default" title="紫色"><div class="palette-color" style="background:#6750A4"></div></div>
+            <div class="palette-item" data-val="blue" title="藍色"><div class="palette-color" style="background:#005FAF"></div></div>
+            <div class="palette-item" data-val="green" title="綠色"><div class="palette-color" style="background:#006D3A"></div></div>
+            <div class="palette-item" data-val="yellow" title="黃色"><div class="palette-color" style="background:#6E5E00"></div></div>
+            <div class="palette-item" data-val="gray" title="灰色"><div class="palette-color" style="background:#5D5E61"></div></div>
+          </div>
+        </button>
+        <button class="icon-btn" id="themeToggle" title="切換主題">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="searchInput" placeholder="搜尋筆記...">
+    </div>
+    <div class="notes-list" id="notesList"></div>
+    <button class="fab" id="newNoteBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      <span>新增筆記</span>
+    </button>
+  </aside>
+  <main class="editor" id="editorPane"></main>
+</div>
+
+<script>
+  let notes = [];
+  let activeId = null;
+  let searchQuery = '';
+  let showLineNumbers = false;
+  let lastCreatedId = null;
+
+  const notesListEl = document.getElementById('notesList');
+  const editorPane = document.getElementById('editorPane');
+  const searchInput = document.getElementById('searchInput');
+  const newNoteBtn = document.getElementById('newNoteBtn');
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const paletteToggle = document.getElementById('paletteToggle');
+  const paletteMenu = document.getElementById('paletteMenu');
+
+  const ACCENTS = ['--md-primary', '--md-tertiary', '--md-outline'];
+
+  function formatTime(ts){
+    const diff = Date.now() - ts;
+    const min = Math.floor(diff / 60000);
+    if (min < 1) return '剛剛';
+    if (min < 60) return min + ' 分鐘前';
+    const hr = Math.floor(min/60);
+    if (hr < 24) return hr + ' 小時前';
+    const d = new Date(ts);
+    return (d.getMonth()+1) + '/' + d.getDate();
+  }
+
+  const STORAGE_KEY = 'material-notes-app-v1';
+  const CONFIG_KEY = 'material-notes-config-v1';
+
+  function scheduleSave(){
+    clearTimeout(window.saveTimer);
+    window.saveTimer = setTimeout(() => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+      localStorage.setItem(CONFIG_KEY, JSON.stringify({
+        theme: document.documentElement.getAttribute('data-theme'),
+        accent: document.documentElement.getAttribute('data-accent'),
+        showLines: showLineNumbers
+      }));
+    }, 500);
+  }
+
+  async function loadNotes(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) notes = JSON.parse(raw) || [];
+    const cfgRaw = localStorage.getItem(CONFIG_KEY);
+    if (cfgRaw) {
+      const cfg = JSON.parse(cfgRaw);
+      if (cfg.theme) { document.documentElement.setAttribute('data-theme', cfg.theme); updateThemeIcon(cfg.theme === 'dark'); }
+      if (cfg.accent) { document.documentElement.setAttribute('data-accent', cfg.accent); updatePaletteSelection(cfg.accent); }
+      showLineNumbers = !!cfg.showLines;
+    }
+    activeId = null;
+  }
+
+  function updatePaletteSelection(accent) {
+    document.querySelectorAll('.palette-item').forEach(i => i.classList.toggle('active', (i.dataset.val === (accent || 'default'))));
+  }
+
+  function renderList(){
+    const q = searchQuery.trim().toLowerCase();
+    const filtered = notes.slice().sort((a, b) => {
+      if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
+      return (a.title || '').trim().localeCompare((b.title || '').trim(), 'zh-Hant');
+    }).filter(n => !q || (n.title + ' ' + n.content).toLowerCase().includes(q));
+
+    notesListEl.innerHTML = '';
+    if (filtered.length === 0){
+      notesListEl.innerHTML = `<div class="empty-list">${q ? '找不到符合的筆記' : '還沒有筆記，點下方按鈕開始寫作'}</div>`;
+      return;
+    }
+
+    filtered.forEach((n, idx) => {
+      const item = document.createElement('div');
+      item.className = 'note-item' + (n.id === activeId ? ' active' : '');
+      if (n.id === lastCreatedId) {
+        item.classList.add('note-enter');
+        setTimeout(() => { item.classList.remove('note-enter'); lastCreatedId = null; }, 400);
+      }
+      item.innerHTML = `
+        <div class="note-dot" style="background:var(${ACCENTS[idx % ACCENTS.length]})"></div>
+        <div class="note-texts">
+          <p class="note-title">${n.title.trim() || '無標題'}</p>
+          <p class="note-preview">${(n.content || '').trim().split('\n')[0] || '沒有更多內容'}</p>
+          <span class="note-time">${formatTime(n.updatedAt)}</span>
+        </div>
+        <button class="note-star ${n.pinned ? 'pinned' : ''}"><svg viewBox="0 0 24 24" fill="${n.pinned ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg></button>
+      `;
+      item.querySelector('.note-star').onclick = (e) => { e.stopPropagation(); n.pinned = !n.pinned; renderList(); scheduleSave(); };
+      item.onclick = () => { if(activeId === n.id) return; activeId = n.id; renderList(); renderEditor(); };
+      notesListEl.appendChild(item);
+    });
+  }
+
+  function updateUI(typing) {
+    const titleInput = document.getElementById('titleInput');
+    const contentEl = document.getElementById('contentEditable');
+    const caret = document.getElementById('fakeCaret');
+    const selectionLayer = document.getElementById('selectionLayer');
+    if (!titleInput || !contentEl || !caret) return;
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return;
+    const active = document.activeElement;
+    if (active !== titleInput && active !== contentEl) { caret.style.display = 'none'; selectionLayer.innerHTML = ''; return; }
+    const range = sel.getRangeAt(0);
+    const caretRange = range.cloneRange();
+    caretRange.collapse(true);
+    let rect = caretRange.getClientRects()[0] || caretRange.getBoundingClientRect();
+    if (!rect || rect.top === 0) rect = active.getBoundingClientRect();
+    const editorRect = editorPane.getBoundingClientRect();
+    caret.style.display = 'block';
+    caret.style.top = (rect.top - editorRect.top) + 'px';
+    caret.style.left = (rect.left - editorRect.left) + 'px';
+    caret.style.height = (rect.height || (active === titleInput ? 36 : 22)) + 'px';
+    if (typing) { caret.classList.remove('typing'); void caret.offsetWidth; caret.classList.add('typing'); }
+    selectionLayer.innerHTML = '';
+    if (!sel.isCollapsed) {
+      Array.from(range.getClientRects()).forEach(r => {
+        if (r.width < 1) return;
+        const box = document.createElement('div');
+        box.className = 'sel-rect';
+        box.style.top = (r.top - editorRect.top) + 'px';
+        box.style.left = (r.left - editorRect.left) + 'px';
+        box.style.width = r.width + 'px';
+        box.style.height = r.height + 'px';
+        selectionLayer.appendChild(box);
+      });
+    }
+  }
+
+  function renderEditor(){
+    const note = notes.find(n => n.id === activeId);
+    editorPane.innerHTML = '';
+    if (!note){
+      editorPane.innerHTML = `<div class="empty-editor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg><h2>歡迎回來</h2><p>從左側選擇一則筆記繼續編輯，或點擊「新增筆記」開始寫下新的想法。</p></div>`;
+      return;
+    }
+
+    // Wrap content in a div for switch animation
+    editorPane.innerHTML = `
+      <div class="editor-content-area" id="editorContent">
+        <div class="editor-toolbar">
+          <div class="title-input-container"><div class="title-editable" contenteditable="true" id="titleInput" data-placeholder="標題">${note.title}</div></div>
+          <div class="toolbar-actions">
+            <button class="icon-btn" id="lineBtn" title="切換行數顯示" style="color:${showLineNumbers ? 'var(--md-primary)' : ''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+            <button class="icon-btn" id="deleteBtn" title="刪除筆記"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+          </div>
+        </div>
+        <div class="editor-body-wrap ${showLineNumbers ? 'show-lines' : ''}" id="editorWrap">
+          <div class="line-numbers" id="lineNumbers"></div>
+          <div class="content-editable" contenteditable="true" id="contentEditable" data-placeholder="開始輸入...">${note.content}</div>
+        </div>
+        <div class="editor-overlay-layer">
+          <div class="selection-layer" id="selectionLayer"></div>
+          <div class="fake-caret" id="fakeCaret"></div>
+        </div>
+      </div>
+    `;
+
+    const titleInput = document.getElementById('titleInput');
+    const contentEl = document.getElementById('contentEditable');
+    const lineNumbers = document.getElementById('lineNumbers');
+
+    const updateLines = () => {
+      const lines = contentEl.innerText.split('\n');
+      lineNumbers.innerHTML = lines.map((_, i) => `<span>${i+1}</span>`).join('');
+    };
+    updateLines();
+
+    titleInput.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); contentEl.focus(); } };
+    titleInput.oninput = () => { note.title = titleInput.innerText.replace(/\n/g, ''); note.updatedAt = Date.now(); renderList(); updateUI(true); scheduleSave(); };
+    contentEl.oninput = () => { note.content = contentEl.innerText; note.updatedAt = Date.now(); renderList(); updateLines(); updateUI(true); scheduleSave(); };
+    
+    [titleInput, contentEl].forEach(el => {
+      ['click','keyup','focus','scroll','mousedown','mouseup','touchstart','touchend'].forEach(evt => 
+        el.addEventListener(evt, () => setTimeout(() => updateUI(false), 0), {passive: true})
+      );
+      el.onblur = () => { const caret = document.getElementById('fakeCaret'); if(caret) caret.style.display = 'none'; };
+    });
+
+    document.getElementById('lineBtn').onclick = () => {
+      showLineNumbers = !showLineNumbers;
+      document.getElementById('editorWrap').classList.toggle('show-lines', showLineNumbers);
+      document.getElementById('lineBtn').style.color = showLineNumbers ? 'var(--md-primary)' : '';
+      scheduleSave();
+    };
+
+    document.getElementById('deleteBtn').onclick = () => {
+      if (confirm('確定要刪除這則筆記嗎？')) { notes = notes.filter(n => n.id !== note.id); activeId = null; renderList(); renderEditor(); scheduleSave(); }
+    };
+  }
+
+  newNoteBtn.onclick = () => {
+    const id = Math.random().toString(36).substr(2, 9);
+    const note = { id, title: '', content: '', updatedAt: Date.now(), pinned: false };
+    notes.push(note); activeId = id; lastCreatedId = id; renderList(); renderEditor(); scheduleSave();
+  };
+
+  searchInput.oninput = () => { searchQuery = searchInput.value; renderList(); };
+  themeToggle.onclick = () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    updateThemeIcon(next === 'dark'); scheduleSave();
+  };
+  paletteToggle.onclick = (e) => { e.stopPropagation(); paletteMenu.classList.toggle('show'); };
+  document.querySelectorAll('.palette-item').forEach(item => {
+    item.onclick = () => {
+      const val = item.dataset.val;
+      if (val === 'default') document.documentElement.removeAttribute('data-accent');
+      else document.documentElement.setAttribute('data-accent', val);
+      updatePaletteSelection(val); scheduleSave();
+    };
+  });
+  document.onclick = () => paletteMenu.classList.remove('show');
+  function updateThemeIcon(isDark){
+    themeIcon.innerHTML = isDark ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>' : '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+  }
+
+  window.addEventListener('resize', () => { updateUI(false); });
+
+  loadNotes().then(() => { renderList(); renderEditor(); });
+</script>
+</body>
+</html>
