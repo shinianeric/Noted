@@ -11,7 +11,7 @@ A lightweight, privacy-focused, and serverless note-taking application built ent
 You can use Noted instantly in your web browser without any registration or setup:
 
 * **Primary Link:** [https://notteed.netlify.app/](https://notteed.netlify.app/)
-* **[Primary Link too]:** *Coming soon (Under preparation)*
+* **[Primary Link too]:** [https://shinianeric.github.io/Noted/](https://notteed.netlify.app/)
 
 ---
 
