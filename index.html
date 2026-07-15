@@ -47,72 +47,20 @@
   }
 
   /* Theme: Blue */
-  [data-accent="blue"] {
-    --md-primary: #005FAF;
-    --md-primary-container: #D1E4FF;
-    --md-on-primary-container: #001D36;
-    --md-secondary-container: #D7E3F7;
-    --md-on-secondary-container: #101C2B;
-    --md-tertiary: #525E7D;
-  }
-  [data-accent="blue"][data-theme="dark"] {
-    --md-primary: #A1C9FF;
-    --md-primary-container: #004887;
-    --md-on-primary-container: #D1E4FF;
-    --md-secondary-container: #3C4758;
-    --md-on-secondary-container: #D7E3F7;
-  }
+  [data-accent="blue"] { --md-primary: #005FAF; --md-primary-container: #D1E4FF; --md-on-primary-container: #001D36; --md-secondary-container: #D7E3F7; --md-on-secondary-container: #101C2B; --md-tertiary: #525E7D; }
+  [data-accent="blue"][data-theme="dark"] { --md-primary: #A1C9FF; --md-primary-container: #004887; --md-on-primary-container: #D1E4FF; --md-secondary-container: #3C4758; --md-on-secondary-container: #D7E3F7; }
 
   /* Theme: Green */
-  [data-accent="green"] {
-    --md-primary: #006D3A;
-    --md-primary-container: #98F7B5;
-    --md-on-primary-container: #00210E;
-    --md-secondary-container: #D1E8D5;
-    --md-on-secondary-container: #0E1F12;
-    --md-tertiary: #3B644A;
-  }
-  [data-accent="green"][data-theme="dark"] {
-    --md-primary: #7DDA9B;
-    --md-primary-container: #00522A;
-    --md-on-primary-container: #98F7B5;
-    --md-secondary-container: #394B3E;
-    --md-on-secondary-container: #D1E8D5;
-  }
+  [data-accent="green"] { --md-primary: #006D3A; --md-primary-container: #98F7B5; --md-on-primary-container: #00210E; --md-secondary-container: #D1E8D5; --md-on-secondary-container: #0E1F12; --md-tertiary: #3B644A; }
+  [data-accent="green"][data-theme="dark"] { --md-primary: #7DDA9B; --md-primary-container: #00522A; --md-on-primary-container: #98F7B5; --md-secondary-container: #394B3E; --md-on-secondary-container: #D1E8D5; }
 
   /* Theme: Yellow */
-  [data-accent="yellow"] {
-    --md-primary: #6E5E00;
-    --md-primary-container: #FFE46F;
-    --md-on-primary-container: #221B00;
-    --md-secondary-container: #E8E2C4;
-    --md-on-secondary-container: #1D1C0A;
-    --md-tertiary: #4A6547;
-  }
-  [data-accent="yellow"][data-theme="dark"] {
-    --md-primary: #E2C84D;
-    --md-primary-container: #534600;
-    --md-on-primary-container: #FFE46F;
-    --md-secondary-container: #4A4731;
-    --md-on-secondary-container: #E8E2C4;
-  }
+  [data-accent="yellow"] { --md-primary: #6E5E00; --md-primary-container: #FFE46F; --md-on-primary-container: #221B00; --md-secondary-container: #E8E2C4; --md-on-secondary-container: #1D1C0A; --md-tertiary: #4A6547; }
+  [data-accent="yellow"][data-theme="dark"] { --md-primary: #E2C84D; --md-primary-container: #534600; --md-on-primary-container: #FFE46F; --md-secondary-container: #4A4731; --md-on-secondary-container: #E8E2C4; }
 
   /* Theme: Gray */
-  [data-accent="gray"] {
-    --md-primary: #5D5E61;
-    --md-primary-container: #E3E2E6;
-    --md-on-primary-container: #1A1C1E;
-    --md-secondary-container: #E1E2E5;
-    --md-on-secondary-container: #191C1E;
-    --md-tertiary: #5E5E62;
-  }
-  [data-accent="gray"][data-theme="dark"] {
-    --md-primary: #C7C6CA;
-    --md-primary-container: #46474A;
-    --md-on-primary-container: #E3E2E6;
-    --md-secondary-container: #444749;
-    --md-on-secondary-container: #E1E2E5;
-  }
+  [data-accent="gray"] { --md-primary: #5D5E61; --md-primary-container: #E3E2E6; --md-on-primary-container: #1A1C1E; --md-secondary-container: #E1E2E5; --md-on-secondary-container: #191C1E; --md-tertiary: #5E5E62; }
+  [data-accent="gray"][data-theme="dark"] { --md-primary: #C7C6CA; --md-primary-container: #46474A; --md-on-primary-container: #E3E2E6; --md-secondary-container: #444749; --md-on-secondary-container: #E1E2E5; }
 
   [data-theme="dark"]{
     color-scheme: dark;
@@ -150,415 +98,94 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .app{
-    display:flex;
-    height:100vh;
-    height:100dvh;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    gap: 20px;
-  }
+  ::selection { background: transparent; }
+  ::-moz-selection { background: transparent; }
+
+  .app{ display:flex; height:100vh; height:100dvh; max-width: 1400px; margin: 0 auto; padding: 20px; gap: 20px; }
 
   /* ---------------- Sidebar ---------------- */
-  .sidebar{
-    width: 340px;
-    min-width: 300px;
-    background: var(--md-surface-container);
-    border-radius: var(--shape-lg);
-    display:flex;
-    flex-direction:column;
-    padding: 20px 16px 16px 16px;
-    position: relative;
-    overflow: hidden;
-  }
-  .sidebar-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding: 4px 10px 20px 10px;
-  }
-  .sidebar-header h1{
-    font-size: 26px;
-    font-weight: 700;
-    margin:0;
-    letter-spacing: -0.02em;
-  }
-  .header-controls {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .icon-btn{
-    width:44px; height:44px;
-    border-radius: var(--shape-full);
-    border:none;
-    background: transparent;
-    color: var(--md-on-surface-variant);
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    transition: background .2s var(--motion-standard), color .2s var(--motion-standard);
-    flex-shrink:0;
-    position: relative;
-  }
+  .sidebar{ width: 340px; min-width: 300px; background: var(--md-surface-container); border-radius: var(--shape-lg); display:flex; flex-direction:column; padding: 20px 16px 16px 16px; position: relative; overflow: hidden; }
+  .sidebar-header{ display:flex; align-items:center; justify-content:space-between; padding: 4px 10px 20px 10px; }
+  .sidebar-header h1{ font-size: 26px; font-weight: 700; margin:0; letter-spacing: -0.02em; }
+  .header-controls { display: flex; align-items: center; gap: 4px; }
+  .icon-btn{ width:44px; height:44px; border-radius: var(--shape-full); border:none; background: transparent; color: var(--md-on-surface-variant); display:flex; align-items:center; justify-content:center; cursor:pointer; transition: background .2s var(--motion-standard), color .2s var(--motion-standard); flex-shrink:0; position: relative; }
   .icon-btn:hover{ background: var(--md-surface-container-high); }
-  .icon-btn:active{ background: var(--md-secondary-container); }
-  .icon-btn svg{ width:22px; height:22px; }
+  .icon-btn svg{ width:22px; height:22px; flex-shrink: 0; }
 
-  /* Palette Menu */
-  .palette-menu {
-    position: absolute;
-    top: 52px;
-    right: 0;
-    background: var(--md-surface-container-high);
-    border-radius: var(--shape-md);
-    padding: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    z-index: 100;
-    opacity: 0;
-    transform: scale(0.8) translateY(-10px);
-    pointer-events: none;
-    transition: opacity .3s var(--motion-emphasized), transform .3s var(--motion-emphasized);
-    transform-origin: top right;
-  }
-  .palette-menu.show { 
-    opacity: 1; 
-    transform: scale(1) translateY(0);
-    pointer-events: auto;
-  }
-  .palette-item {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform .2s var(--motion-standard), box-shadow .2s;
-    border: 2px solid transparent;
-  }
-  .palette-item:hover { transform: scale(1.15); }
+  .palette-menu { position: absolute; top: 52px; right: 0; background: var(--md-surface-container-high); border-radius: var(--shape-md); padding: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); display: flex; flex-direction: row; gap: 8px; z-index: 100; opacity: 0; transform: scale(0.8) translateY(-10px); pointer-events: none; transition: opacity .3s var(--motion-emphasized), transform .3s var(--motion-emphasized); transform-origin: top right; }
+  .palette-menu.show { opacity: 1; transform: scale(1) translateY(0); pointer-events: auto; }
+  .palette-item { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform .2s var(--motion-standard), box-shadow .2s; border: 2px solid transparent; }
   .palette-item.active { border-color: var(--md-primary); box-shadow: 0 0 0 2px var(--md-surface); }
   .palette-color { width: 100%; height: 100%; border-radius: 50%; }
 
-  .search-box{
-    display:flex;
-    align-items:center;
-    gap: 10px;
-    background: var(--md-surface-container-high);
-    border-radius: var(--shape-full);
-    padding: 12px 18px;
-    margin: 0 4px 16px 4px;
-    transition: box-shadow .2s var(--motion-standard);
-  }
-  .search-box:focus-within{
-    box-shadow: 0 0 0 2px var(--md-primary) inset;
-  }
+  .search-box{ display:flex; align-items:center; gap: 10px; background: var(--md-surface-container-high); border-radius: var(--shape-full); padding: 12px 18px; margin: 0 4px 16px 4px; transition: box-shadow .2s var(--motion-standard); }
+  .search-box:focus-within{ box-shadow: 0 0 0 2px var(--md-primary) inset; }
   .search-box svg{ width:20px; height:20px; color: var(--md-on-surface-variant); flex-shrink:0; }
-  .search-box input{
-    border:none; outline:none; background:transparent;
-    font: inherit; font-size:15px; color: var(--md-on-surface); width:100%;
-  }
-  .search-box input::placeholder{ color: var(--md-on-surface-variant); }
+  .search-box input{ border:none; outline:none; background:transparent; font: inherit; font-size:15px; color: var(--md-on-surface); width:100%; }
 
-  .notes-list{
-    flex:1;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    gap: 4px;
-    padding: 0 4px 90px 4px;
-  }
-  .notes-list::-webkit-scrollbar{ width:6px; }
-  .notes-list::-webkit-scrollbar-thumb{ background: var(--md-outline-variant); border-radius:4px; }
-
-  .note-item{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    padding: 14px 14px;
-    border-radius: var(--shape-md);
-    cursor:pointer;
-    transition: background .2s var(--motion-standard), transform .15s var(--motion-standard);
-    position:relative;
-  }
+  .notes-list{ flex:1; overflow-y:auto; display:flex; flex-direction:column; gap: 4px; padding: 0 4px 90px 4px; }
+  .note-item{ display:flex; align-items:flex-start; gap:12px; padding: 14px 14px; border-radius: var(--shape-md); cursor:pointer; transition: background .2s var(--motion-standard), transform .15s var(--motion-standard); position:relative; }
   .note-item:hover{ background: var(--md-surface-container-high); }
   .note-item.active{ background: var(--md-secondary-container); }
-  .note-item:active{ transform: scale(0.98); }
+  .note-item.note-enter { animation: noteEnter 0.4s var(--motion-emphasized); }
+  @keyframes noteEnter { from { opacity: 0; transform: scale(0.8) translateY(-10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
-  .note-dot{
-    width:12px; height:12px; border-radius:50%;
-    margin-top:6px; flex-shrink:0;
-  }
+  .note-dot{ width:12px; height:12px; border-radius:50%; margin-top:6px; flex-shrink:0; }
   .note-texts{ flex:1; min-width:0; }
-  .note-title{
-    font-weight:600; font-size:15.5px; margin:0 0 3px 0;
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    color: var(--md-on-surface);
-  }
-  .note-item.active .note-title{ color: var(--md-on-secondary-container); }
-  .note-preview{
-    font-size:13.5px; color: var(--md-on-surface-variant);
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    margin:0 0 4px 0;
-  }
+  .note-title{ font-weight:600; font-size:15.5px; margin:0 0 3px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color: var(--md-on-surface); }
+  .note-preview{ font-size:13.5px; color: var(--md-on-surface-variant); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0 0 4px 0; }
   .note-time{ font-size:12px; color: var(--md-on-surface-variant); opacity:.8; }
 
-  .note-star{
-    width:32px; height:32px;
-    border-radius: var(--shape-full);
-    border:none;
-    background:transparent;
-    color: var(--md-outline);
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    flex-shrink:0;
-    align-self:center;
-    margin-left:2px;
-    transition: color .2s var(--motion-standard), transform .15s var(--motion-standard), background .2s var(--motion-standard);
-  }
-  .note-star:hover{ background: var(--md-surface-container-high); }
-  .note-star:active{ transform: scale(0.8); }
-  .note-star svg{ width:18px; height:18px; }
+  .note-star{ width:32px; height:32px; border-radius: var(--shape-full); border:none; background:transparent; color: var(--md-outline); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; align-self:center; margin-left:2px; transition: color .2s var(--motion-standard), transform .15s var(--motion-standard), background .2s var(--motion-standard); }
   .note-star.pinned{ color: var(--md-primary); }
-  .note-star.pinned:active{ transform: scale(0.8) rotate(-8deg); }
 
-  .note-item.note-enter{
-    animation: noteEnter .45s var(--motion-emphasized);
-  }
-  @keyframes noteEnter{
-    0%{ opacity:0; transform: scale(0.82) translateY(-14px); }
-    65%{ opacity:1; transform: scale(1.03) translateY(0); }
-    100%{ opacity:1; transform: scale(1) translateY(0); }
-  }
-
-  .note-item.note-search-enter{
-    animation: noteSearchEnter .32s var(--motion-standard) both;
-  }
-  @keyframes noteSearchEnter{
-    from{ opacity:0; transform: translateY(-6px) scale(0.96); }
-    to{ opacity:1; transform: translateY(0) scale(1); }
-  }
-
-  .empty-list{
-    text-align:center;
-    padding: 60px 20px;
-    color: var(--md-on-surface-variant);
-    font-size: 14px;
-  }
-
-  .fab{
-    position:absolute;
-    bottom:20px; left:50%;
-    transform: translateX(-50%);
-    display:flex; align-items:center; gap:10px;
-    background: var(--md-primary-container);
-    color: var(--md-on-primary-container);
-    border:none;
-    border-radius: var(--shape-full);
-    padding: 16px 26px;
-    font: inherit; font-weight:600; font-size:15px;
-    cursor:pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
-    transition: box-shadow .25s var(--motion-standard), transform .15s var(--motion-standard), background .2s;
-    width: calc(100% - 24px);
-    justify-content:center;
-  }
-  .fab:hover{ box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
-  .fab:active{ transform: translateX(-50%) scale(0.97); }
-  .fab svg{ width:22px; height:22px; }
+  .fab{ position:absolute; bottom:20px; left:50%; transform: translateX(-50%); display:flex; align-items:center; gap:10px; background: var(--md-primary-container); color: var(--md-on-primary-container); border:none; border-radius: var(--shape-full); padding: 16px 26px; font: inherit; font-weight:600; font-size:15px; cursor:pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: box-shadow .25s, transform .15s, background .2s; width: calc(100% - 24px); justify-content:center; z-index: 50; }
+  .fab svg{ width:22px; height:22px; flex-shrink: 0; }
 
   /* ---------------- Editor ---------------- */
-  .editor{
-    flex:1;
-    background: var(--md-surface-container);
-    border-radius: var(--shape-lg);
-    display:flex;
-    flex-direction:column;
-    overflow:hidden;
-    min-width: 0;
-    position: relative; /* Base for all overlays */
-  }
-  .editor-toolbar{
-    display:flex;
-    align-items:center;
-    gap: 14px;
-    padding: 22px 32px 10px 32px;
-    position: relative;
-    z-index: 10;
-  }
-  .title-input-container {
-    flex: 1;
-    min-width: 0;
-  }
-  .title-editable{
-    width: 100%;
-    border:none; outline:none; background:transparent;
-    font: inherit; font-family: var(--font-main);
-    font-size: 30px; font-weight:700; color: var(--md-on-surface);
-    letter-spacing:-0.01em;
-    caret-color: transparent;
-    display: block;
-    position: relative;
-    z-index: 2;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .title-editable:empty::before{
-    content: attr(data-placeholder);
-    color: var(--md-on-surface-variant);
-    opacity:.6;
-    pointer-events:none;
-  }
+  .editor{ flex:1; background: var(--md-surface-container); border-radius: var(--shape-lg); display:flex; flex-direction:column; overflow:hidden; min-width: 0; position: relative; }
+  .editor-content-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; animation: editorFadeIn 0.35s var(--motion-standard); }
+  @keyframes editorFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-  .toolbar-actions{ display:flex; align-items:center; gap: 8px; flex-shrink:0; }
+  /* Fixed Toolbar Layout */
+  .editor-toolbar{ display:flex; align-items:center; justify-content: space-between; gap: 14px; padding: 22px 32px 10px 32px; position: relative; z-index: 10; }
+  .title-input-container { flex: 1; min-width: 0; display: flex; align-items: center; }
+  .title-editable{ flex: 1; border:none; outline:none; background:transparent; font: inherit; font-family: var(--font-main); font-size: 30px; font-weight:700; color: var(--md-on-surface); letter-spacing:-0.01em; caret-color: transparent; display: block; position: relative; z-index: 2; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+  .title-editable:empty::before{ content: attr(data-placeholder); color: var(--md-on-surface-variant); opacity:.6; pointer-events:none; }
 
-  .editor-body-wrap{
-    flex:1;
-    position:relative;
-    padding: 10px 32px 32px 32px;
-    overflow-y:auto;
-    display: flex;
-    align-items: flex-start;
-  }
-  .editor-body-wrap::-webkit-scrollbar{ width:6px; }
-  .editor-body-wrap::-webkit-scrollbar-thumb{ background: var(--md-outline-variant); border-radius:4px; }
+  .toolbar-actions { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
 
-  .line-numbers {
-    width: 0;
-    overflow: hidden;
-    padding-right: 0;
-    text-align: right;
-    color: var(--md-outline);
-    font-family: var(--font-main);
-    font-size: var(--editor-font-size);
-    line-height: var(--editor-line-height);
-    user-select: none;
-    opacity: 0;
-    border-right: 0 solid var(--md-outline-variant);
-    margin-right: 0;
-    transition: width .3s var(--motion-emphasized), opacity .3s var(--motion-emphasized), margin-right .3s var(--motion-emphasized), padding-right .3s var(--motion-emphasized);
-    white-space: nowrap;
-    padding-top: 0;
-    flex-shrink: 0;
-  }
-  .editor-body-wrap.show-lines .line-numbers { 
-    width: 44px; 
-    opacity: 0.5; 
-    margin-right: 16px; 
-    padding-right: 12px;
-    border-right-width: 1px;
-  }
-  .line-numbers span {
-    display: block;
-    height: calc(var(--editor-font-size) * var(--editor-line-height));
-  }
+  .editor-body-wrap{ flex:1; position:relative; padding: 10px 32px 32px 32px; overflow-y:auto; display: flex; align-items: flex-start; }
+  .line-numbers { width: 0; overflow: hidden; padding-right: 0; text-align: right; color: var(--md-outline); font-family: var(--font-main); font-size: var(--editor-font-size); line-height: var(--editor-line-height); user-select: none; opacity: 0; border-right: 0 solid var(--md-outline-variant); margin-right: 0; transition: width .3s var(--motion-emphasized), opacity .3s var(--motion-emphasized), margin-right .3s var(--motion-emphasized), padding-right .3s var(--motion-emphasized); white-space: nowrap; flex-shrink: 0; }
+  .editor-body-wrap.show-lines .line-numbers { width: 44px; opacity: 0.5; margin-right: 16px; padding-right: 12px; border-right-width: 1px; }
+  .line-numbers span { display: block; height: calc(var(--editor-font-size) * var(--editor-line-height)); }
 
-  .content-editable{
-    flex: 1;
-    min-height: 100%;
-    outline:none;
-    font-size: var(--editor-font-size);
-    line-height: var(--editor-line-height);
-    color: var(--md-on-surface);
-    caret-color: transparent;
-    white-space: pre-wrap;
-    word-break: break-word;
-    position: relative;
-    z-index: 2;
-    padding-top: 0;
-    margin-top: 0;
-  }
-  .content-editable:empty::before{
-    content: attr(data-placeholder);
-    color: var(--md-on-surface-variant);
-    opacity:.55;
-    pointer-events:none;
-  }
+  .content-editable{ flex: 1; min-height: 100%; outline:none; font-size: var(--editor-font-size); line-height: var(--editor-line-height); color: var(--md-on-surface); caret-color: transparent; white-space: pre-wrap; word-break: break-word; position: relative; z-index: 2; }
+  .content-editable:empty::before{ content: attr(data-placeholder); color: var(--md-on-surface-variant); opacity:.55; pointer-events:none; }
 
-  /* Universal Overlays */
-  .editor-overlay-layer {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 5;
-  }
-  .selection-layer{
-    position:absolute;
-    top:0; left:0;
-    width: 100%; height: 100%;
-  }
-  .sel-rect{
-    position:absolute;
-    background: var(--md-primary);
-    opacity: 0.45;
-    border-radius: 3px;
-    animation: selRectIn .16s var(--motion-standard) both;
-    transform-origin: left center;
-  }
-  @keyframes selRectIn{
-    from{ opacity:0; transform: scaleX(0.85); }
-    to{ opacity:0.45; transform: scaleX(1); }
-  }
+  /* Overlays */
+  .editor-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; overflow: hidden; }
+  .selection-layer{ position:absolute; top:0; left:0; width: 100%; height: 100%; }
+  .sel-rect{ position:absolute; background: var(--md-primary); opacity: 0.45; border-radius: 3px; animation: selRectIn .2s var(--motion-emphasized) both; transform-origin: left center; }
+  @keyframes selRectIn{ from{ opacity:0; transform: scale(0.95); } to{ opacity:0.45; transform: scale(1); } }
 
-  .fake-caret{
-    position:absolute;
-    width: 2.5px;
-    border-radius: 2px;
-    background: var(--md-primary);
-    display:none;
-    animation: caretIdleColor 2s ease-in-out infinite;
-    transition: top .13s var(--motion-standard), left .13s var(--motion-standard), height .13s var(--motion-standard);
-    z-index: 100;
-  }
-  .fake-caret.typing{
-    display:block;
-    animation: caretGlow 0.45s var(--motion-emphasized);
-  }
-  @keyframes caretIdleColor {
-    0%, 100% { background: var(--md-primary); box-shadow: 0 0 2px var(--md-primary); }
-    50% { background: var(--md-tertiary); box-shadow: 0 0 4px var(--md-tertiary); }
-  }
-  @keyframes caretGlow{
-    0%{
-      opacity:1;
-      transform: scaleY(1.35) scaleX(1.8);
-      background: var(--md-tertiary);
-      box-shadow: 0 0 8px 1px var(--md-tertiary);
-    }
-    100%{
-      opacity:1;
-      transform: scaleY(1) scaleX(1);
-      background: var(--md-primary);
-      box-shadow: 0 0 0 0 transparent;
-    }
-  }
+  .fake-caret{ position:absolute; width: 2.5px; border-radius: 2px; background: var(--md-primary); display:none; animation: caretIdleColor 2s ease-in-out infinite; transition: top .13s var(--motion-standard), left .13s var(--motion-standard), height .13s var(--motion-standard); z-index: 100; }
+  .fake-caret.start-anchor { display: block; opacity: 0.6; }
+  @keyframes caretIdleColor { 0%, 100% { background: var(--md-primary); box-shadow: 0 0 2px var(--md-primary); } 50% { background: var(--md-tertiary); box-shadow: 0 0 4px var(--md-tertiary); } }
 
-  .empty-editor{
-    height:100%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:16px;
-    color: var(--md-on-surface-variant);
-    text-align:center;
-    padding: 40px;
-  }
-  .empty-editor svg{ width:72px; height:72px; opacity:.3; color: var(--md-on-surface-variant); }
-  .empty-editor h2{ font-size:22px; margin:0; color: var(--md-on-surface-variant); font-weight:500; opacity: 0.5; }
-  .empty-editor p{ margin:0; font-size:14.5px; max-width:280px; opacity: 0.4; }
+  .empty-editor{ height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; color: var(--md-on-surface-variant); text-align:center; padding: 40px; }
+  .empty-editor svg{ width:72px; height:72px; opacity:.3; flex-shrink: 0; }
+  .empty-editor h2{ font-size:22px; margin:0; opacity: 0.5; }
 
-  @media (max-width: 860px){
-    .app{ padding:10px; gap:10px; }
-    .sidebar{ width: 260px; min-width:220px; padding:14px 10px; }
-    .editor-toolbar{ padding:18px 18px 8px 18px; }
-    .editor-body-wrap{ padding: 8px 18px 20px 18px; }
-    .title-editable{ font-size:24px; }
+  /* ---------------- Responsive ---------------- */
+  @media (max-width: 900px), (orientation: portrait) {
+    .app { flex-direction: column; padding: 10px; height: auto; min-height: 100vh; min-height: 100dvh; gap: 10px; }
+    .sidebar { width: 100%; min-width: 0; max-height: 35vh; padding: 14px 10px; }
+    .editor { flex: 1; min-height: 50vh; }
+    .editor-toolbar { padding: 16px 20px 8px 20px; }
+    .title-editable { font-size: 24px; }
+    .editor-body-wrap { padding: 8px 20px 20px 20px; }
+    .fab { padding: 14px 22px; font-size: 14px; bottom: 16px; width: auto; min-width: 140px; max-width: 80%; }
   }
 </style>
 </head>
@@ -572,14 +199,14 @@
         <button class="icon-btn" id="paletteToggle" title="自定義顏色">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
           <div class="palette-menu" id="paletteMenu">
-            <div class="palette-item" data-val="default" title="紫色 (預設)"><div class="palette-color" style="background:#6750A4"></div></div>
+            <div class="palette-item" data-val="default" title="紫色"><div class="palette-color" style="background:#6750A4"></div></div>
             <div class="palette-item" data-val="blue" title="藍色"><div class="palette-color" style="background:#005FAF"></div></div>
             <div class="palette-item" data-val="green" title="綠色"><div class="palette-color" style="background:#006D3A"></div></div>
             <div class="palette-item" data-val="yellow" title="黃色"><div class="palette-color" style="background:#6E5E00"></div></div>
             <div class="palette-item" data-val="gray" title="灰色"><div class="palette-color" style="background:#5D5E61"></div></div>
           </div>
         </button>
-        <button class="icon-btn" id="themeToggle" title="切換深色/淺色主題">
+        <button class="icon-btn" id="themeToggle" title="切換主題">
           <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </button>
       </div>
@@ -602,6 +229,9 @@
   let activeId = null;
   let searchQuery = '';
   let showLineNumbers = false;
+  let lastCreatedId = null;
+  let isSelecting = false;
+  let startRect = null;
 
   const notesListEl = document.getElementById('notesList');
   const editorPane = document.getElementById('editorPane');
@@ -628,10 +258,9 @@
   const STORAGE_KEY = 'material-notes-app-v1';
   const CONFIG_KEY = 'material-notes-config-v1';
 
-  let saveTimer = null;
   function scheduleSave(){
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => {
+    clearTimeout(window.saveTimer);
+    window.saveTimer = setTimeout(() => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
       localStorage.setItem(CONFIG_KEY, JSON.stringify({
         theme: document.documentElement.getAttribute('data-theme'),
@@ -651,7 +280,6 @@
       if (cfg.accent) { document.documentElement.setAttribute('data-accent', cfg.accent); updatePaletteSelection(cfg.accent); }
       showLineNumbers = !!cfg.showLines;
     }
-    activeId = null;
   }
 
   function updatePaletteSelection(accent) {
@@ -674,6 +302,10 @@
     filtered.forEach((n, idx) => {
       const item = document.createElement('div');
       item.className = 'note-item' + (n.id === activeId ? ' active' : '');
+      if (n.id === lastCreatedId) {
+        item.classList.add('note-enter');
+        setTimeout(() => { item.classList.remove('note-enter'); lastCreatedId = null; }, 400);
+      }
       item.innerHTML = `
         <div class="note-dot" style="background:var(${ACCENTS[idx % ACCENTS.length]})"></div>
         <div class="note-texts">
@@ -684,9 +316,60 @@
         <button class="note-star ${n.pinned ? 'pinned' : ''}"><svg viewBox="0 0 24 24" fill="${n.pinned ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg></button>
       `;
       item.querySelector('.note-star').onclick = (e) => { e.stopPropagation(); n.pinned = !n.pinned; renderList(); scheduleSave(); };
-      item.onclick = () => { activeId = n.id; renderList(); renderEditor(); };
+      item.onclick = () => { if(activeId === n.id) return; activeId = n.id; renderList(); renderEditor(); };
       notesListEl.appendChild(item);
     });
+  }
+
+  function updateUI(showAnimation) {
+    const titleInput = document.getElementById('titleInput');
+    const contentEl = document.getElementById('contentEditable');
+    const caret = document.getElementById('fakeCaret');
+    const startCaret = document.getElementById('startCaret');
+    const selectionLayer = document.getElementById('selectionLayer');
+    if (!titleInput || !contentEl || !caret) return;
+
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return;
+    const active = document.activeElement;
+    if (active !== titleInput && active !== contentEl) { caret.style.display = 'none'; startCaret.style.display = 'none'; selectionLayer.innerHTML = ''; return; }
+    
+    const editorRect = editorPane.getBoundingClientRect();
+    const range = sel.getRangeAt(0);
+
+    const caretRange = range.cloneRange();
+    caretRange.collapse(sel.isCollapsed ? true : false);
+    let rect = caretRange.getClientRects()[0] || caretRange.getBoundingClientRect();
+    if (!rect || rect.top === 0) rect = active.getBoundingClientRect();
+
+    caret.style.display = 'block';
+    caret.style.top = (rect.top - editorRect.top) + 'px';
+    caret.style.left = (rect.left - editorRect.left) + 'px';
+    caret.style.height = (rect.height || (active === titleInput ? 36 : 22)) + 'px';
+
+    if (isSelecting && startRect) {
+      startCaret.style.display = 'block';
+      startCaret.style.top = (startRect.top - editorRect.top) + 'px';
+      startCaret.style.left = (startRect.left - editorRect.left) + 'px';
+      startCaret.style.height = (startRect.height || (active === titleInput ? 36 : 22)) + 'px';
+    } else {
+      startCaret.style.display = 'none';
+    }
+
+    selectionLayer.innerHTML = '';
+    if (!isSelecting && !sel.isCollapsed) {
+      Array.from(range.getClientRects()).forEach(r => {
+        if (r.width < 1) return;
+        const box = document.createElement('div');
+        box.className = 'sel-rect';
+        box.style.top = (r.top - editorRect.top) + 'px';
+        box.style.left = (r.left - editorRect.left) + 'px';
+        box.style.width = r.width + 'px';
+        box.style.height = r.height + 'px';
+        if (!showAnimation) box.style.animation = 'none';
+        selectionLayer.appendChild(box);
+      });
+    }
   }
 
   function renderEditor(){
@@ -698,28 +381,31 @@
     }
 
     editorPane.innerHTML = `
-      <div class="editor-toolbar">
-        <div class="title-input-container"><div class="title-editable" contenteditable="true" id="titleInput" data-placeholder="標題">${note.title}</div></div>
-        <div class="toolbar-actions">
-          <button class="icon-btn" id="lineBtn" title="切換行數顯示" style="color:${showLineNumbers ? 'var(--md-primary)' : ''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
-          <button class="icon-btn" id="deleteBtn" title="刪除筆記"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+      <div class="editor-content-area" id="editorContent">
+        <div class="editor-toolbar">
+          <div class="title-input-container">
+            <div class="title-editable" contenteditable="true" id="titleInput" data-placeholder="標題">${note.title}</div>
+          </div>
+          <div class="toolbar-actions">
+            <button class="icon-btn" id="lineBtn" title="切換行數顯示" style="color:${showLineNumbers ? 'var(--md-primary)' : ''}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+            <button class="icon-btn" id="deleteBtn" title="刪除筆記"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
+          </div>
         </div>
-      </div>
-      <div class="editor-body-wrap ${showLineNumbers ? 'show-lines' : ''}" id="editorWrap">
-        <div class="line-numbers" id="lineNumbers"></div>
-        <div class="content-editable" contenteditable="true" id="contentEditable" data-placeholder="開始輸入...">${note.content}</div>
-      </div>
-      <div class="editor-overlay-layer">
-        <div class="selection-layer" id="selectionLayer"></div>
-        <div class="fake-caret" id="fakeCaret"></div>
+        <div class="editor-body-wrap ${showLineNumbers ? 'show-lines' : ''}" id="editorWrap">
+          <div class="line-numbers" id="lineNumbers"></div>
+          <div class="content-editable" contenteditable="true" id="contentEditable" data-placeholder="開始輸入...">${note.content}</div>
+        </div>
+        <div class="editor-overlay-layer">
+          <div class="selection-layer" id="selectionLayer"></div>
+          <div class="fake-caret start-anchor" id="startCaret"></div>
+          <div class="fake-caret" id="fakeCaret"></div>
+        </div>
       </div>
     `;
 
     const titleInput = document.getElementById('titleInput');
     const contentEl = document.getElementById('contentEditable');
     const lineNumbers = document.getElementById('lineNumbers');
-    const caret = document.getElementById('fakeCaret');
-    const selectionLayer = document.getElementById('selectionLayer');
 
     const updateLines = () => {
       const lines = contentEl.innerText.split('\n');
@@ -727,63 +413,34 @@
     };
     updateLines();
 
-    const updateUI = (typing) => {
-      const sel = window.getSelection();
-      if (!sel || sel.rangeCount === 0) return;
-      
-      const active = document.activeElement;
-      if (active !== titleInput && active !== contentEl) {
-        caret.style.display = 'none';
-        selectionLayer.innerHTML = '';
-        return;
-      }
-      
-      const range = sel.getRangeAt(0);
-      const caretRange = range.cloneRange();
-      caretRange.collapse(true);
-      
-      let rect = caretRange.getClientRects()[0] || caretRange.getBoundingClientRect();
-      if (!rect || rect.top === 0) rect = active.getBoundingClientRect();
-
-      const editorRect = editorPane.getBoundingClientRect();
-      caret.style.display = 'block';
-      caret.style.top = (rect.top - editorRect.top) + 'px';
-      caret.style.left = (rect.left - editorRect.left) + 'px';
-      caret.style.height = (rect.height || (active === titleInput ? 36 : 22)) + 'px';
-      
-      if (typing) { caret.classList.remove('typing'); void caret.offsetWidth; caret.classList.add('typing'); }
-
-      selectionLayer.innerHTML = '';
-      if (!sel.isCollapsed) {
-        Array.from(range.getClientRects()).forEach(r => {
-          if (r.width < 1) return;
-          const box = document.createElement('div');
-          box.className = 'sel-rect';
-          box.style.top = (r.top - editorRect.top) + 'px';
-          box.style.left = (r.left - editorRect.left) + 'px';
-          box.style.width = r.width + 'px';
-          box.style.height = r.height + 'px';
-          selectionLayer.appendChild(box);
-        });
-      }
-    };
-
-    titleInput.oninput = (e) => {
-      if (e.inputType === 'insertParagraph') { e.preventDefault(); contentEl.focus(); return; }
-      note.title = titleInput.innerText.replace(/\n/g, '');
-      note.updatedAt = Date.now(); renderList(); updateUI(true); scheduleSave();
-    };
-    contentEl.oninput = () => {
-      note.content = contentEl.innerText;
-      note.updatedAt = Date.now(); renderList(); updateLines(); updateUI(true); scheduleSave();
-    };
+    titleInput.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); contentEl.focus(); } };
+    titleInput.oninput = () => { note.title = titleInput.innerText.replace(/\n/g, ''); note.updatedAt = Date.now(); renderList(); updateUI(false); scheduleSave(); };
+    contentEl.oninput = () => { note.content = contentEl.innerText; note.updatedAt = Date.now(); renderList(); updateLines(); updateUI(false); scheduleSave(); };
     
     [titleInput, contentEl].forEach(el => {
-      ['click','keyup','focus','scroll','mousedown','mouseup'].forEach(evt => 
-        el.addEventListener(evt, () => setTimeout(() => updateUI(false), 0))
-      );
-      el.onblur = () => { caret.style.display = 'none'; selectionLayer.innerHTML = ''; };
+      el.onmousedown = (e) => {
+        isSelecting = true;
+        const sel = window.getSelection();
+        setTimeout(() => {
+          if (sel.rangeCount > 0) {
+            const range = sel.getRangeAt(0).cloneRange();
+            range.collapse(true);
+            startRect = range.getClientRects()[0] || range.getBoundingClientRect();
+          }
+          updateUI(false);
+        }, 0);
+      };
+      el.onmousemove = () => { if (isSelecting) updateUI(false); };
+      ['keyup','focus','scroll','touchstart'].forEach(evt => el.addEventListener(evt, () => setTimeout(() => updateUI(false), 0), {passive: true}));
+      el.onblur = () => { 
+        const caret = document.getElementById('fakeCaret');
+        const startCaret = document.getElementById('startCaret');
+        if(caret) caret.style.display = 'none';
+        if(startCaret) startCaret.style.display = 'none';
+      };
     });
+
+    window.onmouseup = () => { if (isSelecting) { isSelecting = false; updateUI(true); } };
 
     document.getElementById('lineBtn').onclick = () => {
       showLineNumbers = !showLineNumbers;
@@ -793,16 +450,14 @@
     };
 
     document.getElementById('deleteBtn').onclick = () => {
-      if (confirm('確定要刪除這則筆記嗎？')) {
-        notes = notes.filter(n => n.id !== note.id);
-        activeId = null; renderList(); renderEditor(); scheduleSave();
-      }
+      if (confirm('確定要刪除這則筆記嗎？')) { notes = notes.filter(n => n.id !== note.id); activeId = null; renderList(); renderEditor(); scheduleSave(); }
     };
   }
 
   newNoteBtn.onclick = () => {
-    const note = { id: Math.random().toString(36).substr(2, 9), title: '', content: '', updatedAt: Date.now(), pinned: false };
-    notes.push(note); activeId = note.id; renderList(); renderEditor(); scheduleSave();
+    const id = Math.random().toString(36).substr(2, 9);
+    const note = { id, title: '', content: '', updatedAt: Date.now(), pinned: false };
+    notes.push(note); activeId = id; lastCreatedId = id; renderList(); renderEditor(); scheduleSave();
   };
 
   searchInput.oninput = () => { searchQuery = searchInput.value; renderList(); };
@@ -825,6 +480,7 @@
     themeIcon.innerHTML = isDark ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>' : '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
   }
 
+  window.addEventListener('resize', () => { updateUI(false); });
   loadNotes().then(() => { renderList(); renderEditor(); });
 </script>
 </body>
